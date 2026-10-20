@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiếng Anh 6 - Thì Hiện Tại Tiếp Diễn (Present Continuous)</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      background-color: #f8fafc;
+      color: #2d3748;
+      padding: 20px;
+      margin: 0;
+    }
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #4a5568;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      padding: 6px 12px;
+      background: #edf2f7;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .back-home:hover {
+      background: #e2e8f0;
+      color: #1a202c;
+    }
+    h1 {
+      color: #7c3aed;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .sub-title {
+      text-align: center;
+      color: #718096;
+      margin-bottom: 24px;
+      font-size: 15px;
+    }
+    .controls {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+    .exercise-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+      background-color: #fff;
+    }
+    .question-title {
+      font-weight: 600;
+      color: #6b46c1;
+      margin-bottom: 8px;
+      font-size: 15.5px;
+    }
+    .btn {
+      background-color: #7c3aed;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .btn:hover {
+      background-color: #6d28d9;
+    }
+    .btn-toggle-all {
+      background-color: #4a5568;
+    }
+    .btn-toggle-all:hover {
+      background-color: #2d3748;
+    }
+    .answer-box {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 16px;
+      background-color: #faf5ff;
+      border-left: 4px solid #7c3aed;
+      border-radius: 4px;
+      color: #44337a;
+    }
+    .answer-box.show {
+      display: block;
+    }
+    code {
+      background: #f1f5f9;
+      color: #c53030;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <a href="../index.html" class="back-home">← Quay lại danh sách bài tập</a>
+
+  <h1>Tiếng Anh 6 - Thì Hiện Tại Tiếp Diễn</h1>
+  <div class="sub-title">10 Câu Luyện Tập Cấu Trúc, Quy Tắc Thêm -ing & Dấu Hiệu Nhận Biết</div>
+
+  <div class="controls">
+    <button class="btn btn-toggle-all" onclick="toggleAll()">Ẩn / Hiện tất cả đáp án</button>
+  </div>
+
+  <!-- Câu 1 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 1: Nhận biết thì với dấu hiệu "Look!"</div>
+    <p>Look! The children ______ in the school playground.<br>
+    A. play &nbsp;&nbsp;&nbsp;&nbsp; B. is playing &nbsp;&nbsp;&nbsp;&nbsp; C. are playing &nbsp;&nbsp;&nbsp;&nbsp; D. played</p>
+    <button class="btn" onclick="toggleAnswer(1)">Xem đáp án</button>
+    <div id="ans-1" class="answer-box">
+      <strong>Đáp án: C. are playing</strong><br>
+      <em>Giải thích:</em> Dấu hiệu "Look!" chỉ hành động đang diễn ra trước mắt. Chủ ngữ "The children" là danh từ số nhiều (những đứa trẻ) nên dùng to be <strong>are + playing</strong>.
+    </div>
+  </div>
+
+  <!-- Câu 2 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 2: Nhận biết thì với dấu hiệu "Listen!"</div>
+    <p>Listen! Someone ______ the guitar in the next room.<br>
+    A. is playing &nbsp;&nbsp;&nbsp;&nbsp; B. are playing &nbsp;&nbsp;&nbsp;&nbsp; C. plays &nbsp;&nbsp;&nbsp;&nbsp; D. play</p>
+    <button class="btn" onclick="toggleAnswer(2)">Xem đáp án</button>
+    <div id="ans-2" class="answer-box">
+      <strong>Đáp án: A. is playing</strong><br>
+      <em>Giải thích:</em> Dấu hiệu "Listen!" (Hãy nghe kìa!). Đại từ bất định "Someone" (Ai đó) luôn đi với động từ số ít ➔ <strong>is playing</strong>.
+    </div>
+  </div>
+
+  <!-- Câu 3 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 3: Dấu hiệu "at the moment"</div>
+    <p>My mother ______ dinner in the kitchen at the moment.<br>
+    A. cooks &nbsp;&nbsp;&nbsp;&nbsp; B. is cooking &nbsp;&nbsp;&nbsp;&nbsp; C. are cooking &nbsp;&nbsp;&nbsp;&nbsp; D. cooked</p>
+    <button class="btn" onclick="toggleAnswer(3)">Xem đáp án</button>
+    <div id="ans-3" class="answer-box">
+      <strong>Đáp án: B. is cooking</strong><br>
+      <em>Giải thích:</em> Dấu hiệu "at the moment" (ngay lúc này). Chủ ngữ "My mother" là ngôi thứ 3 số ít ➔ dùng <strong>is cooking</strong>.
+    </div>
+  </div>
+
+  <!-- Câu 4 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 4: Dấu hiệu "right now" & ngôi "I"</div>
+    <p>Where are you, Phong? - I ______ my English homework in my bedroom right now.<br>
+    A. am doing &nbsp;&nbsp;&nbsp;&nbsp; B. do &nbsp;&nbsp;&nbsp;&nbsp; C. is doing &nbsp;&nbsp;&nbsp;&nbsp; D. are doing</p>
+    <button class="btn" onclick="toggleAnswer(4)">Xem đáp án</button>
+    <div id="ans-4" class="answer-box">
+      <strong>Đáp án: A. am doing</strong><br>
+      <em>Giải thích:</em> Dấu hiệu "right now" (ngay bây giờ). Chủ ngữ "I" luôn đi với to be <strong>am + doing</strong>.
+    </div>
+  </div>
+
+  <!-- Câu 5 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 5: Dạng câu phủ định (Negative form)</div>
+    <p>They ______ TV now. They are reading books.<br>
+    A. aren't watching &nbsp;&nbsp;&nbsp;&nbsp; B. isn't watching &nbsp;&nbsp;&nbsp;&nbsp; C. don't watch &nbsp;&nbsp;&nbsp;&nbsp; D. not watching</p>
+    <button class="btn" onclick="toggleAnswer(5)">Xem đáp án</button>
+    <div id="ans-5" class="answer-box">
+      <strong>Đáp án: A. aren't watching</strong><br>
+      <em>Giải thích:</em> Công thức phủ định: <strong>S + am/is/are + not + V-ing</strong>. Chủ ngữ "They" đi với <strong>are not (aren't) watching</strong>.
+    </div>
+  </div>
+
+  <!-- Câu 6 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 6: Câu hỏi Nghi vấn (Yes/No question)</div>
+    <p>______ Mai ______ her bicycle to school at present?<br>
+    A. Is / riding &nbsp;&nbsp;&nbsp;&nbsp; B. Are / riding &nbsp;&nbsp;&nbsp;&nbsp; C. Does / ride &nbsp;&nbsp;&nbsp;&nbsp; D. Is / rideing</p>
+    <button class="btn" onclick="toggleAnswer(6)">Xem đáp án</button>
+    <div id="ans-6" class="answer-box">
+      <strong>Đáp án: A. Is / riding</strong><br>
+      <em>Giải thích:</em> Câu hỏi thì HTTD: <strong>Am/Is/Are + S + V-ing?</strong>. Mai là số ít dùng "Is", động từ "ride" tận cùng là 'e' nên bỏ 'e' rồi thêm -ing thành <strong>riding</strong>.
+    </div>
+  </div>
+
+  <!-- Câu 7 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 7: Quy tắc gấp đôi phụ âm khi thêm -ing</div>
+    <p>Look at the lake! Some students ______ in the water.<br>
+    A. are swiming &nbsp;&nbsp;&nbsp;&nbsp; B. are swimming &nbsp;&nbsp;&nbsp;&nbsp; C. is swimming &nbsp;&nbsp;&nbsp;&nbsp; D. swim</p>
+    <button class="btn" onclick="toggleAnswer(7)">Xem đáp án</button>
+    <div id="ans-7" class="answer-box">
+      <strong>Đáp án: B. are swimming</strong><br>
+      <em>Giải thích:</em> Động từ "swim" có 1 âm tiết, tận cùng là 1 nguyên âm (i) + 1 phụ âm (m) ➔ phải gấp đôi phụ âm cuối trước khi thêm -ing: <strong>swimming</strong>.
+    </div>
+  </div>
+
+  <!-- Câu 8 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 8: Quy tắc bỏ đuôi 'e' trước khi thêm -ing</div>
+    <p>Be quiet! My brother ______ a letter to his penfriend in England.<br>
+    A. is writeing &nbsp;&nbsp;&nbsp;&nbsp; B. is writing &nbsp;&nbsp;&nbsp;&nbsp; C. writes &nbsp;&nbsp;&nbsp;&nbsp; D. are writing</p>
+    <button class="btn" onclick="toggleAnswer(8)">Xem đáp án</button>
+    <div id="ans-8" class="answer-box">
+      <strong>Đáp án: B. is writing</strong><br>
+      <em>Giải thích:</em> Động từ "write" tận cùng có đuôi 'e' câm ➔ bỏ 'e' thêm -ing thành <strong>writing</strong> (không viết là writeing).
+    </div>
+  </div>
+
+  <!-- Câu 9 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 9: Câu hỏi với từ để hỏi (Wh-questions)</div>
+    <p>What ______ your sister ______ right now? - She is drawing a picture.<br>
+    A. is / doing &nbsp;&nbsp;&nbsp;&nbsp; B. are / doing &nbsp;&nbsp;&nbsp;&nbsp; C. does / do &nbsp;&nbsp;&nbsp;&nbsp; D. is / do</p>
+    <button class="btn" onclick="toggleAnswer(9)">Xem đáp án</button>
+    <div id="ans-9" class="answer-box">
+      <strong>Đáp án: A. is / doing</strong><br>
+      <em>Giải thích:</em> Cấu trúc: <strong>Wh-word + am/is/are + S + V-ing?</strong>. "your sister" là số ít ➔ <strong>What is your sister doing?</strong>
+    </div>
+  </div>
+
+  <!-- Câu 10 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 10: Phân biệt Hiện tại đơn (thói quen) & Hiện tại tiếp diễn (đang diễn ra)</div>
+    <p>Ba usually ______ to school by bus, but today he ______ on foot.<br>
+    A. goes / is walking &nbsp;&nbsp;&nbsp;&nbsp; B. is going / walks &nbsp;&nbsp;&nbsp;&nbsp; C. go / walk &nbsp;&nbsp;&nbsp;&nbsp; D. goes / walks</p>
+    <button class="btn" onclick="toggleAnswer(10)">Xem đáp án</button>
+    <div id="ans-10" class="answer-box">
+      <strong>Đáp án: A. goes / is walking</strong><br>
+      <em>Giải thích:</em><br>
+      • Vế 1 có "usually" (thói quen lặp đi lặp lại) ➔ chia Hiện tại đơn: <strong>goes</strong>.<br>
+      • Vế 2 có "today" (sự việc tạm thời khác thường ngày hôm nay) ➔ chia Hiện tại tiếp diễn: <strong>is walking</strong>.
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function toggleAnswer(id) {
+    var ans = document.getElementById('ans-' + id);
+    ans.classList.toggle('show');
+  }
+
+  function toggleAll() {
+    var answers = document.querySelectorAll('.answer-box');
+    var anyHidden = Array.from(answers).some(a => !a.classList.contains('show'));
+    answers.forEach(a => {
+      if (anyHidden) a.classList.add('show');
+      else a.classList.remove('show');
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiếng Anh 6 - Thì Hiện Tại Đơn & Hiện Tại Tiếp Diễn</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f7fafc;
+      color: #2d3748;
+      padding: 20px;
+      margin: 0;
+    }
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #4a5568;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      padding: 6px 12px;
+      background: #edf2f7;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .back-home:hover {
+      background: #e2e8f0;
+      color: #1a202c;
+    }
+    h1 {
+      color: #805ad5;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .sub-title {
+      text-align: center;
+      color: #718096;
+      margin-bottom: 24px;
+      font-size: 15px;
+    }
+    .controls {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+    .exercise-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+      background-color: #fff;
+    }
+    .question-title {
+      font-weight: 600;
+      color: #6b46c1;
+      margin-bottom: 8px;
+    }
+    .btn {
+      background-color: #805ad5;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .btn:hover {
+      background-color: #6b46c1;
+    }
+    .btn-toggle-all {
+      background-color: #4a5568;
+    }
+    .btn-toggle-all:hover {
+      background-color: #2d3748;
+    }
+    .answer-box {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 16px;
+      background-color: #faf5ff;
+      border-left: 4px solid #805ad5;
+      border-radius: 4px;
+      color: #44337a;
+    }
+    .answer-box.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <a href="../index.html" class="back-home">← Quay lại danh sách bài tập</a>
+
+  <h1>Tiếng Anh 6 - Thì Hiện Tại Đơn & Tiếp Diễn</h1>
+  <div class="sub-title">Phân biệt Present Simple & Present Continuous</div>
+
+  <div class="controls">
+    <button class="btn btn-toggle-all" onclick="toggleAll()">Ẩn / Hiện tất cả đáp án</button>
+  </div>
+
+  <div class="exercise-card">
+    <div class="question-title">Câu 1: Phân biệt thì qua dấu hiệu thời gian</div>
+    <p>Chọn dạng thì đúng cho động từ trong ngoặc:<br>
+    a) Look! The boys (play) ______ soccer in the school yard.<br>
+    b) Listen! Somebody (sing) ______ in the music room.<br>
+    c) Every summer, my family (visit) ______ our grandparents in Da Nang.<br>
+    d) What are you doing right now? - I (read) ______ a book.</p>
+    <button class="btn" onclick="toggleAnswer(1)">Xem đáp án</button>
+    <div id="ans-1" class="answer-box">
+      <strong>Đáp án & Giải thích:</strong><br>
+      a) <strong>are playing</strong> (Dấu hiệu "Look!" - hành động đang diễn ra)<br>
+      b) <strong>is singing</strong> (Dấu hiệu "Listen!" - hành động đang diễn ra, Somebody là ngôi thứ 3 số ít)<br>
+      c) <strong>visits</strong> (Dấu hiệu "Every summer" - thói quen định kỳ, chia Hiện tại đơn)<br>
+      d) <strong>am reading</strong> (Dấu hiệu "right now" - ngay lúc này)
+    </div>
+  </div>
+
+  <div class="exercise-card">
+    <div class="question-title">Câu 2: Trắc nghiệm nhận biết</div>
+    <p>Khoanh tròn vào chữ cái đứng trước câu trả lời đúng:<br>
+    1. He usually ______ up at 6.00 a.m.<br>
+    A. get &nbsp;&nbsp;&nbsp;&nbsp; B. gets &nbsp;&nbsp;&nbsp;&nbsp; C. is getting &nbsp;&nbsp;&nbsp;&nbsp; D. getting<br><br>
+    2. Be quiet! The baby ______ in the bedroom.<br>
+    A. sleeps &nbsp;&nbsp;&nbsp;&nbsp; B. sleep &nbsp;&nbsp;&nbsp;&nbsp; C. is sleeping &nbsp;&nbsp;&nbsp;&nbsp; D. slept</p>
+    <button class="btn" onclick="toggleAnswer(2)">Xem đáp án</button>
+    <div id="ans-2" class="answer-box">
+      <strong>Đáp án & Giải thích:</strong><br>
+      1. <strong>B. gets</strong> (Diễn tả thói quen lặp đi lặp lại có "usually")<br>
+      2. <strong>C. is sleeping</strong> (Diễn tả hành động đang diễn ra ngay lúc nói với mệnh lệnh "Be quiet!")
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleAnswer(id) {
+    var ans = document.getElementById('ans-' + id);
+    ans.classList.toggle('show');
+  }
+
+  function toggleAll() {
+    var answers = document.querySelectorAll('.answer-box');
+    var anyHidden = Array.from(answers).some(a => !a.classList.contains('show'));
+    answers.forEach(a => {
+      if (anyHidden) a.classList.add('show');
+      else a.classList.remove('show');
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiếng Anh 6 - Unit 3: My Friends (Luyện tập Từ vựng)</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f8fafc;
+      color: #2d3748;
+      padding: 20px;
+      margin: 0;
+    }
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #4a5568;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      padding: 6px 12px;
+      background: #edf2f7;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .back-home:hover {
+      background: #e2e8f0;
+      color: #1a202c;
+    }
+    h1 {
+      color: #6b46c1;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .sub-title {
+      text-align: center;
+      color: #718096;
+      margin-bottom: 24px;
+      font-size: 15px;
+    }
+    .controls {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+    .exercise-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+      background-color: #fff;
+    }
+    .question-title {
+      font-weight: 600;
+      color: #553c9a;
+      margin-bottom: 8px;
+      font-size: 15.5px;
+    }
+    .btn {
+      background-color: #7c3aed;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .btn:hover {
+      background-color: #6d28d9;
+    }
+    .btn-toggle-all {
+      background-color: #4a5568;
+    }
+    .btn-toggle-all:hover {
+      background-color: #2d3748;
+    }
+    .answer-box {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 16px;
+      background-color: #faf5ff;
+      border-left: 4px solid #7c3aed;
+      border-radius: 4px;
+      color: #44337a;
+    }
+    .answer-box.show {
+      display: block;
+    }
+    code {
+      background: #f1f5f9;
+      color: #c53030;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <a href="../index.html" class="back-home">← Quay lại danh sách bài tập</a>
+
+  <h1>Tiếng Anh 6 - Unit 3: My Friends</h1>
+  <div class="sub-title">10 Câu Luyện Tập Từ Vựng Miêu Tả Tính Cách & Ngoại Hình</div>
+
+  <div class="controls">
+    <button class="btn btn-toggle-all" onclick="toggleAll()">Ẩn / Hiện tất cả đáp án</button>
+  </div>
+
+  <!-- Câu 1 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 1: Điền tính từ miêu tả tính cách thích hợp</div>
+    <p>Nam spends most of his free time studying and doing extra exercises. He is very ______.<br>
+    A. funny &nbsp;&nbsp;&nbsp;&nbsp; B. hard-working &nbsp;&nbsp;&nbsp;&nbsp; C. shy &nbsp;&nbsp;&nbsp;&nbsp; D. creative</p>
+    <button class="btn" onclick="toggleAnswer(1)">Xem đáp án</button>
+    <div id="ans-1" class="answer-box">
+      <strong>Đáp án: B. hard-working</strong><br>
+      <em>Giải thích:</em> "hard-working" nghĩa là chăm chỉ. Câu nói Nam dành phần lớn thời gian rảnh để học và làm thêm bài tập.
+    </div>
+  </div>
+
+  <!-- Câu 2 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 2: Chọn từ thích hợp chỉ sự thông minh</div>
+    <p>She understands difficult maths problems very quickly. She is a ______ girl.<br>
+    A. clever &nbsp;&nbsp;&nbsp;&nbsp; B. patient &nbsp;&nbsp;&nbsp;&nbsp; C. caring &nbsp;&nbsp;&nbsp;&nbsp; D. chubby</p>
+    <button class="btn" onclick="toggleAnswer(2)">Xem đáp án</button>
+    <div id="ans-2" class="answer-box">
+      <strong>Đáp án: A. clever</strong><br>
+      <em>Giải thích:</em> "clever" nghĩa là thông minh, nhanh trí (hiểu các bài toán khó rất nhanh).
+    </div>
+  </div>
+
+  <!-- Câu 3 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 3: Chọn từ miêu tả tính sáng tạo</div>
+    <p>Mai likes painting pictures and writing stories. She is very ______.<br>
+    A. shy &nbsp;&nbsp;&nbsp;&nbsp; B. creative &nbsp;&nbsp;&nbsp;&nbsp; C. curly &nbsp;&nbsp;&nbsp;&nbsp; D. straight</p>
+    <button class="btn" onclick="toggleAnswer(3)">Xem đáp án</button>
+    <div id="ans-3" class="answer-box">
+      <strong>Đáp án: B. creative</strong><br>
+      <em>Giải thích:</em> "creative" nghĩa là có tính sáng tạo (thích vẽ tranh và viết truyện).
+    </div>
+  </div>
+
+  <!-- Câu 4 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 4: Chọn từ miêu tả ngoại hình (mái tóc)</div>
+    <p>My sister doesn't have straight hair. Her hair is ______.<br>
+    A. clever &nbsp;&nbsp;&nbsp;&nbsp; B. curly &nbsp;&nbsp;&nbsp;&nbsp; C. kind &nbsp;&nbsp;&nbsp;&nbsp; D. active</p>
+    <button class="btn" onclick="toggleAnswer(4)">Xem đáp án</button>
+    <div id="ans-4" class="answer-box">
+      <strong>Đáp án: B. curly</strong><br>
+      <em>Giải thích:</em> "curly hair" là tóc xoăn (ngược nghĩa với "straight hair" - tóc thẳng).
+    </div>
+  </div>
+
+  <!-- Câu 5 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 5: Nhận biết tính từ chỉ sự hài hước</div>
+    <p>Peter always tells jokes and makes us laugh. He is so ______.<br>
+    A. funny &nbsp;&nbsp;&nbsp;&nbsp; B. patient &nbsp;&nbsp;&nbsp;&nbsp; C. shy &nbsp;&nbsp;&nbsp;&nbsp; D. confident</p>
+    <button class="btn" onclick="toggleAnswer(5)">Xem đáp án</button>
+    <div id="ans-5" class="answer-box">
+      <strong>Đáp án: A. funny</strong><br>
+      <em>Giải thích:</em> "funny" nghĩa là hài hước, vui nhộn (kể chuyện cười "tells jokes" và làm mọi người cười "makes us laugh").
+    </div>
+  </div>
+
+  <!-- Câu 6 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 6: Chọn từ miêu tả tính tự tin</div>
+    <p>Linh is not afraid of speaking in front of the whole class. She is very ______.<br>
+    A. confident &nbsp;&nbsp;&nbsp;&nbsp; B. shy &nbsp;&nbsp;&nbsp;&nbsp; C. caring &nbsp;&nbsp;&nbsp;&nbsp; D. chubby</p>
+    <button class="btn" onclick="toggleAnswer(6)">Xem đáp án</button>
+    <div id="ans-6" class="answer-box">
+      <strong>Đáp án: A. confident</strong><br>
+      <em>Giải thích:</em> "confident" là tự tin (không sợ nói trước đám đông / cả lớp).
+    </div>
+  </div>
+
+  <!-- Câu 7 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 7: Tính từ miêu tả sự nhút nhát</div>
+    <p>Ba is ______ because he feels nervous whenever he meets strangers.<br>
+    A. friendly &nbsp;&nbsp;&nbsp;&nbsp; B. active &nbsp;&nbsp;&nbsp;&nbsp; C. shy &nbsp;&nbsp;&nbsp;&nbsp; D. kind</p>
+    <button class="btn" onclick="toggleAnswer(7)">Xem đáp án</button>
+    <div id="ans-7" class="answer-box">
+      <strong>Đáp án: C. shy</strong><br>
+      <em>Giải thích:</em> "shy" nghĩa là rụt rè, nhút nhát (cảm thấy lo lắng khi gặp người lạ).
+    </div>
+  </div>
+
+  <!-- Câu 8 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 8: Chọn tính từ miêu tả sự chu đáo, biết quan tâm</div>
+    <p>Lan always listens to her friends and helps them when they have problems. She is a ______ person.<br>
+    A. caring &nbsp;&nbsp;&nbsp;&nbsp; B. straight &nbsp;&nbsp;&nbsp;&nbsp; C. curly &nbsp;&nbsp;&nbsp;&nbsp; D. active</p>
+    <button class="btn" onclick="toggleAnswer(8)">Xem đáp án</button>
+    <div id="ans-8" class="answer-box">
+      <strong>Đáp án: A. caring</strong><br>
+      <em>Giải thích:</em> "caring" có nghĩa là chu đáo, biết quan tâm và sẻ chia với người khác.
+    </div>
+  </div>
+
+  <!-- Câu 9 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 9: Từ miêu tả sự kiên nhẫn</div>
+    <p>Our teacher never gets angry when we ask many questions. She is very ______.<br>
+    A. active &nbsp;&nbsp;&nbsp;&nbsp; B. patient &nbsp;&nbsp;&nbsp;&nbsp; C. chubby &nbsp;&nbsp;&nbsp;&nbsp; D. creative</p>
+    <button class="btn" onclick="toggleAnswer(9)">Xem đáp án</button>
+    <div id="ans-9" class="answer-box">
+      <strong>Đáp án: B. patient</strong><br>
+      <em>Giải thích:</em> "patient" có nghĩa là kiên nhẫn, nhẫn nại (không bao giờ nổi giận khi học sinh hỏi nhiều).
+    </div>
+  </div>
+
+  <!-- Câu 10 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 10: Từ vựng miêu tả má phúng phính / mũm mĩm</div>
+    <p>The little baby has round face and ______ cheeks.<br>
+    A. clever &nbsp;&nbsp;&nbsp;&nbsp; B. shy &nbsp;&nbsp;&nbsp;&nbsp; C. chubby &nbsp;&nbsp;&nbsp;&nbsp; D. funny</p>
+    <button class="btn" onclick="toggleAnswer(10)">Xem đáp án</button>
+    <div id="ans-10" class="answer-box">
+      <strong>Đáp án: C. chubby</strong><br>
+      <em>Giải thích:</em> Cụm từ quen thuộc trong bài: "chubby cheeks" (đôi má phúng phính, mũm mĩm đáng yêu).
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function toggleAnswer(id) {
+    var ans = document.getElementById('ans-' + id);
+    ans.classList.toggle('show');
+  }
+
+  function toggleAll() {
+    var answers = document.querySelectorAll('.answer-box');
+    var anyHidden = Array.from(answers).some(a => !a.classList.contains('show'));
+    answers.forEach(a => {
+      if (anyHidden) a.classList.add('show');
+      else a.classList.remove('show');
+    });
+  }
+</script>
+
+</body>
+</html>

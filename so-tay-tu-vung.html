@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sổ Tay Từ Vựng & Luyện Tập Tiếng Anh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --primary: #7c3aed;
+      --primary-hover: #6d28d9;
+      --primary-soft: #f3e8ff;
+      --success: #16a34a;
+      --success-soft: #dcfce7;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f8fafc 50%, #eff6ff 100%);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+      padding: 24px 16px 60px;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* NAV */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #475569;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      background: white;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+
+    .back-btn:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+
+    /* HEADER */
+    .header {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, #7c3aed, #0284c7);
+    }
+
+    .header-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #1e1b4b;
+      margin-bottom: 4px;
+    }
+
+    .header-desc {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* MAIN TABS */
+    .main-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      background: white;
+      padding: 6px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      width: fit-content;
+    }
+
+    .tab-item {
+      padding: 9px 18px;
+      border: none;
+      background: transparent;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tab-item.active {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 10px rgba(124, 58, 237, 0.25);
+    }
+
+    /* PANELS */
+    .panel {
+      display: none;
+    }
+    .panel.active {
+      display: block;
+    }
+
+    /* INPUT FORM */
+    .form-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .form-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 16px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1.5fr 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 5px;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .input-field:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+    }
+
+    .form-extra {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .form-extra {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .btn-add {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+      width: 100%;
+    }
+
+    .btn-add:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    /* ACTION BAR */
+    .action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      margin-bottom: 20px;
+    }
+
+    .action-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .btn-action {
+      background: white;
+      color: #334155;
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-action:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+    }
+
+    /* TABLE */
+    .table-container {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow-x: auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      background: #f8fafc;
+      color: #475569;
+      font-weight: 700;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #f1f5f9;
+      vertical-align: middle;
+    }
+
+    tr:hover td {
+      background: #faf5ff;
+    }
+
+    .word-text {
+      font-weight: 700;
+      color: #1e1b4b;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .audio-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      color: #7c3aed;
+      transition: transform 0.2s;
+      padding: 2px 4px;
+    }
+    .audio-btn:hover { transform: scale(1.2); }
+
+    .part-tag {
+      font-size: 11.5px;
+      padding: 2px 6px;
+      background: #f1f5f9;
+      color: #64748b;
+      border-radius: 4px;
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    .topic-tag {
+      font-size: 12px;
+      padding: 3px 8px;
+      background: #e0f2fe;
+      color: #0369a1;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .delete-btn {
+      color: #ef4444;
+      background: #fee2e2;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .delete-btn:hover { background: #fecaca; }
+
+    /* QUIZ AREA */
+    .quiz-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      max-width: 680px;
+      margin: 0 auto;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .quiz-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .quiz-word-prompt {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 800;
+      color: #1e1b4b;
+      margin: 20px 0 10px;
+    }
+
+    .quiz-pron {
+      text-align: center;
+      color: #64748b;
+      font-size: 15px;
+      margin-bottom: 24px;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .quiz-options {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .quiz-opt-btn {
+      background: #f8fafc;
+      border: 2px solid var(--border);
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #1e293b;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s;
+    }
+
+    .quiz-opt-btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .quiz-opt-btn.correct {
+      background: #ecfdf5 !important;
+      border-color: #10b981 !important;
+      color: #065f46 !important;
+    }
+
+    .quiz-opt-btn.wrong {
+      background: #fef2f2 !important;
+      border-color: #ef4444 !important;
+      color: #991b1b !important;
+    }
+
+    .quiz-next-btn {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: none;
+    }
+
+    /* FLASHCARD */
+    .flashcard-box {
+      perspective: 1000px;
+      width: 100%;
+      height: 240px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .flashcard-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    .flashcard-box.flipped .flashcard-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flashcard-front, .flashcard-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      padding: 24px;
+      border: 2px solid #e2e8f0;
+    }
+
+    .flashcard-front {
+      background: linear-gradient(135deg, #ffffff 0%, #faf5ff 100%);
+    }
+
+    .flashcard-back {
+      background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+      color: white;
+      transform: rotateY(180deg);
+    }
+
+    .flashcard-front h2 {
+      font-size: 34px;
+      color: #1e1b4b;
+      margin-bottom: 8px;
+    }
+
+    .flashcard-back h2 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .flashcard-hint {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-top: 12px;
+    }
+
+    .empty-msg {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- NAV -->
+  <div class="top-nav">
+    <a href="index.html" class="back-btn">← Quay lại Trang Chủ Bài Tập</a>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1 class="header-title">📖 Sổ Từ Vựng Tiếng Anh</h1>
+    <p class="header-desc">
+      Ghi chép từ vựng trong giờ học, luyện tập trắc nghiệm và ôn thẻ flashcard.
+    </p>
+  </div>
+
+  <!-- MAIN TABS -->
+  <div class="main-tabs">
+    <button class="tab-item active" onclick="switchPanel('manage', this)">
+      ✏️ Danh Sách Từ Vựng
+    </button>
+    <button class="tab-item" onclick="switchPanel('quiz', this)">
+      🎯 Làm Bài Tập Trắc Nghiệm
+    </button>
+    <button class="tab-item" onclick="switchPanel('flashcard', this)">
+      🃏 Flashcard Lật Thẻ
+    </button>
+  </div>
+
+  <!-- PANEL 1: QUẢN LÝ TỪ VỰNG -->
+  <div id="panel-manage" class="panel active">
+    <!-- FORM NHẬP -->
+    <div class="form-card">
+      <div class="form-title">➕ Nhập từ mới trong giờ học</div>
+
+      <div class="form-grid">
+        <div class="input-group">
+          <label>Từ tiếng Anh (*)</label>
+          <input type="text" id="inp-word" class="input-field" placeholder="Ví dụ: calculator">
+        </div>
+        <div class="input-group">
+          <label>Nghĩa tiếng Việt (*)</label>
+          <input type="text" id="inp-meaning" class="input-field" placeholder="Ví dụ: máy tính cầm tay" onkeydown="if(event.key==='Enter') addWord()">
+        </div>
+        <div class="input-group">
+          <label>Loại từ</label>
+          <select id="inp-part" class="input-field">
+            <option value="noun">Danh từ (n)</option>
+            <option value="verb">Động từ (v)</option>
+            <option value="adj">Tính từ (adj)</option>
+            <option value="adv">Trạng từ (adv)</option>
+            <option value="phrase">Cụm từ (phrase)</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>Chủ đề / Bài học</label>
+          <input type="text" id="inp-topic" class="input-field" placeholder="Ví dụ: Unit 1">
+        </div>
+      </div>
+
+      <div class="form-extra">
+        <div class="input-group">
+          <label>Câu ví dụ (Tùy chọn)</label>
+          <input type="text" id="inp-example" class="input-field" placeholder="Ví dụ: I use a calculator in maths class." onkeydown="if(event.key==='Enter') addWord()">
+        </div>
+        <div class="input-group" style="display: flex; align-items: flex-end;">
+          <button class="btn-add" onclick="addWord()">
+            ➕ Thêm từ vựng (Enter)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTION BAR -->
+    <div class="action-bar">
+      <div>
+        <strong>Tổng cộng:</strong> <span id="total-words-count" style="color: var(--primary); font-weight: 800;">0</span> từ vựng
+      </div>
+      <div class="action-buttons">
+        <button class="btn-action" style="color: #0369a1; background: #e0f2fe; border-color: #7dd3fc; font-weight: 700;" onclick="reloadFromJSON()" title="Đọc lại dữ liệu từ file tu-vung.json">
+          🔄 Đọc từ tu-vung.json
+        </button>
+        <button class="btn-action" style="color: #7c2d12; background: #fff7ed; border-color: #fed7aa; font-weight: 600;" onclick="exportToJSON()" title="Lưu danh sách từ vựng hiện tại thành file tu-vung.json">
+          💾 Xuất file tu-vung.json
+        </button>
+      </div>
+    </div>
+
+    <!-- TABLE LIST -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 50px;">STT</th>
+            <th>Từ tiếng Anh</th>
+            <th>Loại từ</th>
+            <th>Nghĩa tiếng Việt</th>
+            <th>Ví dụ minh họa</th>
+            <th>Chủ đề</th>
+            <th style="width: 80px; text-align: center;">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="word-table-body">
+          <!-- Render dynamically -->
+        </tbody>
+      </table>
+      <div id="table-empty" class="empty-msg">Chưa có từ vựng nào. Hãy thêm từ ở trên hoặc cập nhật file tu-vung.json nhé!</div>
+    </div>
+  </div>
+
+  <!-- PANEL 2: LÀM BÀI TẬP TRẮC NGHIỆM TRỰC TIẾP -->
+  <div id="panel-quiz" class="panel">
+    <div class="quiz-card">
+      <div class="quiz-header">
+        <span>🎯 Kiểm Tra Nhanh Từ Vựng</span>
+        <span id="quiz-progress">Câu 1/1</span>
+      </div>
+
+      <div class="quiz-word-prompt" id="quiz-question">Loading...</div>
+      <div class="quiz-pron" id="quiz-sub">Chọn nghĩa tiếng Việt chính xác:</div>
+
+      <div class="quiz-options" id="quiz-options">
+        <!-- Render 4 options -->
+      </div>
+
+      <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuizQuestion()">
+        Câu tiếp theo ➔
+      </button>
+    </div>
+  </div>
+
+  <!-- PANEL 3: FLASHCARD LẬT THẺ -->
+  <div id="panel-flashcard" class="panel">
+    <div class="quiz-card" style="text-align: center;">
+      <div class="quiz-header">
+        <span>🃏 Flashcard Phản Xạ Nhanh</span>
+        <span id="fc-progress">Thẻ 1/1</span>
+      </div>
+
+      <div class="flashcard-box" id="flashcard-box" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <h2 id="fc-front-word">Word</h2>
+            <p id="fc-front-part" style="color: #64748b; font-style: italic;">(part of speech)</p>
+            <div class="flashcard-hint">💡 Bấm vào thẻ để lật xem nghĩa</div>
+          </div>
+          <div class="flashcard-back">
+            <h2 id="fc-back-meaning">Nghĩa tiếng Việt</h2>
+            <p id="fc-back-example" style="font-size: 14px; opacity: 0.9;"></p>
+            <div class="flashcard-hint" style="color: #e0e7ff;">💡 Bấm lần nữa để lật lại</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 10px; justify-content: center;">
+        <button class="btn-action" onclick="prevFlashcard()">← Thẻ trước</button>
+        <button class="btn-action" onclick="speakCurrentWord()">🔊 Phát âm</button>
+        <button class="btn-action" style="background: var(--primary); color: white;" onclick="nextFlashcard()">Thẻ sau →</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- NẠP DỮ LIỆU TỪ VỰNG TỰ ĐỘNG -->
+<script src="tu-vung.js"></script>
+
+<script>
+  // 1. KHỞI TẠO DỮ LIỆU TỪ TU-VUNG.JS HOẶC TU-VUNG.JSON
+  let currentWords = Array.isArray(window.VOCAB_DATA) ? [...window.VOCAB_DATA] : [];
+
+  async function reloadFromJSON() {
+    try {
+      const response = await fetch('tu-vung.json?t=' + Date.now());
+      if (response.ok) {
+        currentWords = await response.json();
+        renderTable();
+        updateTotalCount();
+        alert('Đã cập nhật dữ liệu mới nhất từ tu-vung.json!');
+        return;
+      }
+    } catch (e) {
+      // Khi mở dạng file:// cục bộ, đọc từ tu-vung.js
+      if (Array.isArray(window.VOCAB_DATA)) {
+        currentWords = [...window.VOCAB_DATA];
+      }
+    }
+    renderTable();
+    updateTotalCount();
+  }
+
+  function updateTotalCount() {
+    document.getElementById('total-words-count').innerText = currentWords.length;
+  }
+
+  function addWord() {
+    const wordInput = document.getElementById('inp-word');
+    const meaningInput = document.getElementById('inp-meaning');
+    const partInput = document.getElementById('inp-part');
+    const topicInput = document.getElementById('inp-topic');
+    const exampleInput = document.getElementById('inp-example');
+
+    const word = wordInput.value.trim();
+    const meaning = meaningInput.value.trim();
+    const part = partInput.value;
+    const topic = topicInput.value.trim() || 'Unit 1';
+    const example = exampleInput.value.trim();
+
+    if (!word || !meaning) {
+      alert('Vui lòng nhập cả Từ tiếng Anh và Nghĩa tiếng Việt!');
+      return;
+    }
+
+    const newWord = {
+      id: currentWords.length > 0 ? Math.max(...currentWords.map(w => w.id || 0)) + 1 : 1,
+      word: word,
+      part: part,
+      meaning: meaning,
+      example: example,
+      topic: topic
+    };
+
+    currentWords.unshift(newWord);
+
+    wordInput.value = '';
+    meaningInput.value = '';
+    exampleInput.value = '';
+    wordInput.focus();
+
+    renderTable();
+    updateTotalCount();
+  }
+
+  function deleteWord(id) {
+    if (confirm('Bạn có chắc muốn xóa từ vựng này?')) {
+      currentWords = currentWords.filter(w => w.id !== id);
+      renderTable();
+      updateTotalCount();
+    }
+  }
+
+  function speakWord(text) {
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US';
+      utterance.rate = 0.9;
+      window.speechSynthesis.speak(utterance);
+    }
+  }
+
+  function renderTable() {
+    const tbody = document.getElementById('word-table-body');
+    const emptyMsg = document.getElementById('table-empty');
+
+    if (currentWords.length === 0) {
+      tbody.innerHTML = '';
+      emptyMsg.style.display = 'block';
+      return;
+    }
+
+    emptyMsg.style.display = 'none';
+    tbody.innerHTML = currentWords.map((item, index) => {
+      return `
+        <tr>
+          <td>${index + 1}</td>
+          <td>
+            <div class="word-text">
+              <span>${item.word}</span>
+              <button class="audio-btn" onclick="speakWord('${item.word}')" title="Nghe phát âm">🔊</button>
+            </div>
+          </td>
+          <td><span class="part-tag">${item.part || 'noun'}</span></td>
+          <td style="font-weight: 600; color: #1e293b;">${item.meaning}</td>
+          <td style="color: #64748b; font-style: italic;">${item.example || '—'}</td>
+          <td><span class="topic-tag">${item.topic || 'Chung'}</span></td>
+          <td style="text-align: center;">
+            <button class="delete-btn" onclick="deleteWord(${item.id})">Xóa</button>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  function exportToJSON() {
+    if (currentWords.length === 0) {
+      alert('Chưa có từ vựng nào để xuất!');
+      return;
+    }
+    const dataStr = JSON.stringify(currentWords, null, 2);
+    downloadFile(dataStr, 'tu-vung.json', 'application/json');
+  }
+
+  // 2. CHẾ ĐỘ LÀM BÀI TẬP TRẮC NGHIỆM TRỰC TIẾP
+  let quizIndex = 0;
+  let quizScore = 0;
+
+  function startQuiz() {
+    if (currentWords.length < 2) {
+      alert('Cần ít nhất 2 từ vựng để làm trắc nghiệm!');
+      switchPanel('manage', document.querySelector('.tab-item'));
+      return;
+    }
+    quizIndex = 0;
+    quizScore = 0;
+    renderQuizQuestion();
+  }
+
+  function renderQuizQuestion() {
+    if (quizIndex >= currentWords.length) {
+      document.getElementById('quiz-question').innerText = `🎉 Hoàn Thành!`;
+      document.getElementById('quiz-sub').innerText = `Bạn đạt ${quizScore} / ${currentWords.length} câu đúng!`;
+      document.getElementById('quiz-options').innerHTML = `
+        <button class="quiz-next-btn" style="display:block; grid-column: 1 / -1;" onclick="startQuiz()">Làm lại bài kiểm tra ↻</button>
+      `;
+      document.getElementById('quiz-next-btn').style.display = 'none';
+      return;
+    }
+
+    const currentItem = currentWords[quizIndex];
+    document.getElementById('quiz-progress').innerText = `Câu ${quizIndex + 1} / ${currentWords.length}`;
+    document.getElementById('quiz-question').innerHTML = `${currentItem.word} <button class="audio-btn" onclick="speakWord('${currentItem.word}')">🔊</button>`;
+    document.getElementById('quiz-sub').innerText = `Từ loại: (${currentItem.part || 'noun'}) - Chọn nghĩa đúng:`;
+    document.getElementById('quiz-next-btn').style.display = 'none';
+
+    const otherMeanings = currentWords
+      .filter(w => w.word !== currentItem.word)
+      .map(w => w.meaning);
+    shuffleArray(otherMeanings);
+    const options = [currentItem.meaning, ...otherMeanings.slice(0, 3)];
+    shuffleArray(options);
+
+    const optsContainer = document.getElementById('quiz-options');
+    optsContainer.innerHTML = options.map(opt => {
+      return `<button class="quiz-opt-btn" onclick="selectQuizAnswer('${opt.replace(/'/g, "\\'")}', this)">${opt}</button>`;
+    }).join('');
+  }
+
+  function selectQuizAnswer(selectedMeaning, btn) {
+    const currentItem = currentWords[quizIndex];
+    const allBtns = document.querySelectorAll('.quiz-opt-btn');
+    allBtns.forEach(b => b.disabled = true);
+
+    if (selectedMeaning === currentItem.meaning) {
+      btn.classList.add('correct');
+      quizScore++;
+    } else {
+      btn.classList.add('wrong');
+      allBtns.forEach(b => {
+        if (b.innerText === currentItem.meaning) b.classList.add('correct');
+      });
+    }
+
+    document.getElementById('quiz-next-btn').style.display = 'block';
+  }
+
+  function nextQuizQuestion() {
+    quizIndex++;
+    renderQuizQuestion();
+  }
+
+  // 3. FLASHCARD LẬT THẺ
+  let fcIndex = 0;
+
+  function startFlashcard() {
+    if (currentWords.length === 0) {
+      alert('Chưa có từ vựng nào để ôn Flashcard!');
+      switchPanel('manage', document.querySelector('.tab-item'));
+      return;
+    }
+    fcIndex = 0;
+    renderFlashcard();
+  }
+
+  function renderFlashcard() {
+    document.getElementById('flashcard-box').classList.remove('flipped');
+    const item = currentWords[fcIndex];
+    document.getElementById('fc-progress').innerText = `Thẻ ${fcIndex + 1} / ${currentWords.length}`;
+    document.getElementById('fc-front-word').innerText = item.word;
+    document.getElementById('fc-front-part').innerText = `(${item.part || 'noun'}) - ${item.topic || ''}`;
+    document.getElementById('fc-back-meaning').innerText = item.meaning;
+    document.getElementById('fc-back-example').innerText = item.example ? `Ví dụ: "${item.example}"` : '';
+  }
+
+  function nextFlashcard() {
+    if (fcIndex < currentWords.length - 1) {
+      fcIndex++;
+      renderFlashcard();
+    } else {
+      fcIndex = 0;
+      renderFlashcard();
+    }
+  }
+
+  function prevFlashcard() {
+    if (fcIndex > 0) {
+      fcIndex--;
+      renderFlashcard();
+    } else {
+      fcIndex = currentWords.length - 1;
+      renderFlashcard();
+    }
+  }
+
+  function speakCurrentWord() {
+    if (currentWords[fcIndex]) {
+      speakWord(currentWords[fcIndex].word);
+    }
+  }
+
+  // 4. ĐIỀU HƯỚNG PANEL
+  function switchPanel(panelName, tabBtn) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-item').forEach(b => b.classList.remove('active'));
+
+    document.getElementById('panel-' + panelName).classList.add('active');
+    if (tabBtn) tabBtn.classList.add('active');
+
+    if (panelName === 'quiz') startQuiz();
+    if (panelName === 'flashcard') startFlashcard();
+  }
+
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+  function downloadFile(content, fileName, mimeType) {
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 100);
+  }
+
+  // Tải dữ liệu ban đầu
+  window.addEventListener('DOMContentLoaded', () => {
+    renderTable();
+    updateTotalCount();
+  });
+</script>
+
+</body>
+</html>

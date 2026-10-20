@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài tập Số nguyên - Toán lớp 6</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f4f6f8;
+      color: #333;
+      padding: 20px;
+      margin: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    h1 {
+      color: #1a365d;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .controls {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+    .exercise-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      background-color: #fff;
+    }
+    .question-title {
+      font-weight: 600;
+      color: #2b6cb0;
+      margin-bottom: 6px;
+    }
+    .btn {
+      background-color: #3182ce;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .btn:hover {
+      background-color: #2b6cb0;
+    }
+    .btn-toggle-all {
+      background-color: #4a5568;
+    }
+    .btn-toggle-all:hover {
+      background-color: #2d3748;
+    }
+    .answer-box {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 16px;
+      background-color: #f7fafc;
+      border-left: 4px solid #38a169;
+      border-radius: 4px;
+      color: #2d3748;
+    }
+    .answer-box.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Luyện tập: Tập hợp các số nguyên (Toán lớp 6)</h1>
+  
+  <div class="controls">
+    <button class="btn btn-toggle-all" onclick="toggleAll()">Ẩn / Hiện tất cả đáp án</button>
+  </div>
+
+  <!-- Câu 1 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 1: Viết số nguyên thích hợp</div>
+    <p>Hãy dùng số nguyên âm hoặc nguyên dương để biểu diễn các đại lượng sau:<br>
+    a) Tàu ngầm đang lặn ở độ sâu 80 m dưới mực nước biển.<br>
+    b) Số dư tài khoản ngân hàng tăng 500 000 đồng.<br>
+    c) Nhiệt độ tại Sa Pa vào mùa đông giảm xuống 3°C dưới 0°C.</p>
+    <button class="btn" onclick="toggleAnswer(1)">Xem đáp án</button>
+    <div id="ans-1" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      a) -80 m<br>
+      b) +500 000 đồng (hoặc 500 000 đồng)<br>
+      c) -3°C
+    </div>
+  </div>
+
+  <!-- Câu 2 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 2: Số đối của số nguyên</div>
+    <p>Tìm số đối của mỗi số nguyên sau: <code>-15; 0; 8; -(-7); -102</code>.</p>
+    <button class="btn" onclick="toggleAnswer(2)">Xem đáp án</button>
+    <div id="ans-2" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      • Số đối của -15 là 15<br>
+      • Số đối của 0 là 0<br>
+      • Số đối của 8 là -8<br>
+      • Ta có -(-7) = 7, vậy số đối của -(-7) là -7<br>
+      • Số đối của -102 là 102
+    </div>
+  </div>
+
+  <!-- Câu 3 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 3: So sánh các cặp số nguyên</div>
+    <p>Điền dấu thích hợp (&lt;, &gt;, =) vào chỗ chấm:<br>
+    a) -18 ... -25<br>
+    b) -105 ... 0<br>
+    c) -(-12) ... 12<br>
+    d) -35 ... -32</p>
+    <button class="btn" onclick="toggleAnswer(3)">Xem đáp án</button>
+    <div id="ans-3" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      a) -18 &gt; -25 (Vì 18 &lt; 25 nên -18 &gt; -25)<br>
+      b) -105 &lt; 0 (Số nguyên âm luôn bé hơn 0)<br>
+      c) -(-12) = 12<br>
+      d) -35 &lt; -32
+    </div>
+  </div>
+
+  <!-- Câu 4 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 4: Sắp xếp số nguyên</div>
+    <p>Sắp xếp các số nguyên sau theo thứ tự tăng dần:<br>
+    <code>-19, 7, -3, 0, 15, -45, 2</code></p>
+    <button class="btn" onclick="toggleAnswer(4)">Xem đáp án</button>
+    <div id="ans-4" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      Các số âm: -45, -19, -3 (sắp xếp: -45 &lt; -19 &lt; -3)<br>
+      Số 0 nằm giữa.<br>
+      Các số dương: 2, 7, 15 (sắp xếp: 2 &lt; 7 &lt; 15)<br>
+      =&gt; Thứ tự tăng dần: <strong>-45, -19, -3, 0, 2, 7, 15</strong>
+    </div>
+  </div>
+
+  <!-- Câu 5 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 5: Phép cộng hai số nguyên</div>
+    <p>Thực hiện các phép tính sau:<br>
+    a) (-35) + (-65)<br>
+    b) (-120) + 45<br>
+    c) 84 + (-24)</p>
+    <button class="btn" onclick="toggleAnswer(5)">Xem đáp án</button>
+    <div id="ans-5" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      a) (-35) + (-65) = -(35 + 65) = <strong>-100</strong><br>
+      b) (-120) + 45 = -(120 - 45) = <strong>-75</strong><br>
+      c) 84 + (-24) = 84 - 24 = <strong>60</strong>
+    </div>
+  </div>
+
+  <!-- Câu 6 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 6: Phép trừ hai số nguyên</div>
+    <p>Thực hiện phép tính (lưu ý quy tắc <code>a - b = a + (-b)</code>):<br>
+    a) 15 - 28<br>
+    b) (-42) - 18<br>
+    c) (-10) - (-25)</p>
+    <button class="btn" onclick="toggleAnswer(6)">Xem đáp án</button>
+    <div id="ans-6" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      a) 15 - 28 = 15 + (-28) = <strong>-13</strong><br>
+      b) (-42) - 18 = (-42) + (-18) = -(42 + 18) = <strong>-60</strong><br>
+      c) (-10) - (-25) = (-10) + 25 = 25 - 10 = <strong>15</strong>
+    </div>
+  </div>
+
+  <!-- Câu 7 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 7: Quy tắc dấu ngoặc</div>
+    <p>Tính hợp lý biểu thức sau bằng cách phá dấu ngoặc:<br>
+    <code>A = (285 - 115) - (285 - 15)</code></p>
+    <button class="btn" onclick="toggleAnswer(7)">Xem đáp án</button>
+    <div id="ans-7" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      Bỏ dấu ngoặc có dấu trừ đằng trước:<br>
+      A = 285 - 115 - 285 + 15<br>
+      A = (285 - 285) - (115 - 15)<br>
+      A = 0 - 100 = <strong>-100</strong>
+    </div>
+  </div>
+
+  <!-- Câu 8 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 8: Phép nhân hai số nguyên</div>
+    <p>Tính giá trị các biểu thức sau:<br>
+    a) (-12) . 5<br>
+    b) (-8) . (-15)<br>
+    c) (-4) . 125 . (-25) . (-8)</p>
+    <button class="btn" onclick="toggleAnswer(8)">Xem đáp án</button>
+    <div id="ans-8" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      a) (-12) . 5 = -(12 . 5) = <strong>-60</strong><br>
+      b) (-8) . (-15) = 8 . 15 = <strong>120</strong><br>
+      c) Nhóm hợp lý:<br>
+      = [(-4) . (-25)] . [125 . (-8)]<br>
+      = 100 . (-1000) = <strong>-100 000</strong>
+    </div>
+  </div>
+
+  <!-- Câu 9 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 9: Tìm số nguyên x</div>
+    <p>Tìm x ∈ ℤ, biết:<br>
+    a) x + 15 = 4<br>
+    b) 25 - (x - 3) = -10<br>
+    c) 3 . |x| = 27</p>
+    <button class="btn" onclick="toggleAnswer(9)">Xem đáp án</button>
+    <div id="ans-9" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      a) x = 4 - 15 =&gt; <strong>x = -11</strong><br>
+      b) x - 3 = 25 - (-10) = 35 =&gt; x = 35 + 3 =&gt; <strong>x = 38</strong><br>
+      c) |x| = 27 : 3 = 9 =&gt; <strong>x = 9 hoặc x = -9</strong>
+    </div>
+  </div>
+
+  <!-- Câu 10 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 10: Bội và ước của một số nguyên</div>
+    <p>a) Viết tập hợp tất cả các ước nguyên của 6.<br>
+    b) Tìm tất cả các số nguyên n sao cho <code>(n + 3)</code> chia hết cho <code>n</code>.</p>
+    <button class="btn" onclick="toggleAnswer(10)">Xem đáp án</button>
+    <div id="ans-10" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      a) Ư(6) = {<strong>-6, -3, -2, -1, 1, 2, 3, 6</strong>}<br>
+      b) Ta có (n + 3) chia hết cho n =&gt; 3 chia hết cho n.<br>
+      Do đó n là ước của 3. Ư(3) = {-3, -1, 1, 3}.<br>
+      Vậy <strong>n ∈ {-3; -1; 1; 3}</strong> (thỏa mãn điều kiện n ≠ 0).
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleAnswer(id) {
+    const el = document.getElementById('ans-' + id);
+    const btn = event.target;
+    if (el.classList.contains('show')) {
+      el.classList.remove('show');
+      btn.textContent = 'Xem đáp án';
+    } else {
+      el.classList.add('show');
+      btn.textContent = 'Ẩn đáp án';
+    }
+  }
+
+  let allShown = false;
+  function toggleAll() {
+    allShown = !allShown;
+    const answers = document.querySelectorAll('.answer-box');
+    const buttons = document.querySelectorAll('.exercise-card .btn');
+    
+    answers.forEach(box => {
+      if (allShown) {
+        box.classList.add('show');
+      } else {
+        box.classList.remove('show');
+      }
+    });
+
+    buttons.forEach(btn => {
+      btn.textContent = allShown ? 'Ẩn đáp án' : 'Xem đáp án';
+    });
+  }
+</script>
+
+</body>
+</html>

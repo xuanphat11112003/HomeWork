@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài tập Bài 13: Tập hợp các số nguyên - Toán 6</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f0f4f8;
+      color: #2d3748;
+      padding: 20px;
+      margin: 0;
+    }
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+    h1 {
+      color: #1a365d;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .sub-title {
+      text-align: center;
+      color: #718096;
+      margin-bottom: 24px;
+      font-size: 15px;
+    }
+    .controls {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+    .exercise-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      background-color: #fff;
+      transition: border-color 0.2s;
+    }
+    .exercise-card:hover {
+      border-color: #cbd5e0;
+    }
+    .question-title {
+      font-weight: 600;
+      color: #2b6cb0;
+      margin-bottom: 8px;
+    }
+    .btn {
+      background-color: #3182ce;
+      color: white;
+      border: none;
+      padding: 7px 14px;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .btn:hover {
+      background-color: #2b6cb0;
+    }
+    .btn-toggle-all {
+      background-color: #4a5568;
+    }
+    .btn-toggle-all:hover {
+      background-color: #2d3748;
+    }
+    .answer-box {
+      display: none;
+      margin-top: 12px;
+      padding: 12px 16px;
+      background-color: #f7fafc;
+      border-left: 4px solid #38a169;
+      border-radius: 4px;
+      color: #2d3748;
+    }
+    .answer-box.show {
+      display: block;
+    }
+    code {
+      background: #edf2f7;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #4a5568;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      padding: 6px 12px;
+      background: #edf2f7;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .back-home:hover {
+      background: #e2e8f0;
+      color: #1a202c;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <a href="../index.html" class="back-home">← Quay lại danh sách bài tập</a>
+  <h1>Toán lớp 6 - Bài 13: Tập hợp các số nguyên</h1>
+  <div class="sub-title">(Chuẩn phạm vi: Khái niệm số nguyên âm, trục số, số đối, so sánh số nguyên - Không phép tính)</div>
+  
+  <div class="controls">
+    <button class="btn btn-toggle-all" onclick="toggleAll()">Ẩn / Hiện tất cả đáp án</button>
+  </div>
+
+  <!-- Câu 1 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 1: Viết số nguyên biểu diễn các đại lượng thực tế</div>
+    <p>Dùng số nguyên thích hợp (có dấu âm hoặc dương) để ghi lại các tình huống sau:<br>
+    a) Đỉnh núi Fansipan cao 3 143 m so với mực nước biển.<br>
+    b) Vực Mariana sâu 10 994 m dưới mực nước biển.<br>
+    c) Một cửa hàng lỗ 15 triệu đồng trong tháng đầu kinh doanh.<br>
+    d) Nhiệt độ lúc nửa đêm tại Mẫu Sơn là 2°C dưới 0°C.</p>
+    <button class="btn" onclick="toggleAnswer(1)">Xem đáp án</button>
+    <div id="ans-1" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      a) +3 143 m (hoặc 3 143 m)<br>
+      b) -10 994 m<br>
+      c) -15 000 000 đồng (hoặc -15 triệu đồng)<br>
+      d) -2°C
+    </div>
+  </div>
+
+  <!-- Câu 2 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 2: Nhận biết phần tử thuộc tập hợp số nguyên</div>
+    <p>Cho tập hợp các số: <code>A = {-8; 0; 3,5; 17; -1/2; -2026}</code>.<br>
+    Hãy chỉ ra các số thuộc tập hợp số nguyên ℤ và phân loại rõ đâu là số nguyên âm, số nguyên dương, hay số 0.</p>
+    <button class="btn" onclick="toggleAnswer(2)">Xem đáp án</button>
+    <div id="ans-2" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      • Các số thuộc tập hợp ℤ gồm: <strong>-8; 0; 17; -2026</strong> (Lưu ý: 3,5 và -1/2 không phải là số nguyên).<br>
+      • Phân loại:<br>
+      - Số nguyên âm: <strong>-8; -2026</strong><br>
+      - Số nguyên dương: <strong>17</strong><br>
+      - Số <strong>0</strong>: không phải là số nguyên âm, cũng không phải là số nguyên dương.
+    </div>
+  </div>
+
+  <!-- Câu 3 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 3: Đọc và xác định điểm trên trục số</div>
+    <p>Trên trục số nằm ngang, điểm gốc là điểm 0.<br>
+    a) Điểm biểu diễn số -4 nằm ở phía nào của gốc 0 và cách gốc 0 bao nhiêu đơn vị?<br>
+    b) Điểm nằm về phía bên phải gốc 0 và cách gốc 0 một khoảng bằng 7 đơn vị biểu diễn số nào?</p>
+    <button class="btn" onclick="toggleAnswer(3)">Xem đáp án</button>
+    <div id="ans-3" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      a) Điểm -4 nằm về <strong>bên trái</strong> điểm gốc 0 và cách gốc 0 đúng <strong>4 đơn vị</strong>.<br>
+      b) Điểm nằm về phía <strong>bên phải</strong> cách gốc 0 một khoảng 7 đơn vị biểu diễn số <strong>+7 (hoặc 7)</strong>.
+    </div>
+  </div>
+
+  <!-- Câu 4 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 4: Khoảng cách giữa hai điểm trên trục số</div>
+    <p>Trên trục số nằm ngang, hãy tính khoảng cách (theo đơn vị đo) giữa:<br>
+    a) Điểm -5 và điểm gốc 0.<br>
+    b) Điểm -3 và điểm 4.<br>
+    c) Điểm -7 và điểm -2.</p>
+    <button class="btn" onclick="toggleAnswer(4)">Xem đáp án</button>
+    <div id="ans-4" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      a) Khoảng cách từ điểm -5 đến điểm 0 là: <strong>5 đơn vị</strong>.<br>
+      b) Khoảng cách từ điểm -3 đến điểm 4: từ -3 đến 0 là 3 đơn vị, từ 0 đến 4 là 4 đơn vị =&gt; Khoảng cách là <code>3 + 4 = 7 đơn vị</code>.<br>
+      c) Cả hai điểm đều nằm bên trái gốc 0: điểm -7 cách 0 là 7 đơn vị, điểm -2 cách 0 là 2 đơn vị =&gt; Khoảng cách là <code>7 - 2 = 5 đơn vị</code>.
+    </div>
+  </div>
+
+  <!-- Câu 5 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 5: Tìm số đối của số nguyên</div>
+    <p>Tìm số đối của các số nguyên sau: <code>-9; 14; 0; -105; -(-6)</code>.</p>
+    <button class="btn" onclick="toggleAnswer(5)">Xem đáp án</button>
+    <div id="ans-5" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      • Số đối của -9 là <strong>9</strong><br>
+      • Số đối của 14 là <strong>-14</strong><br>
+      • Số đối của 0 là <strong>0</strong><br>
+      • Số đối của -105 là <strong>105</strong><br>
+      • Ta có -(-6) chính là 6, nên số đối của -(-6) là <strong>-6</strong>.
+    </div>
+  </div>
+
+  <!-- Câu 6 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 6: Điền dấu so sánh (&lt;, &gt;)</div>
+    <p>Điền dấu thích hợp (&lt; hoặc &gt;) vào chỗ chấm và giải thích vì sao:<br>
+    a) 5 ... 0<br>
+    b) -7 ... 0<br>
+    c) -12 ... 3<br>
+    d) -15 ... -21</p>
+    <button class="btn" onclick="toggleAnswer(6)">Xem đáp án</button>
+    <div id="ans-6" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      a) <strong>5 &gt; 0</strong> (Mọi số nguyên dương đều lớn hơn 0).<br>
+      b) <strong>-7 &lt; 0</strong> (Mọi số nguyên âm đều nhỏ hơn 0).<br>
+      c) <strong>-12 &lt; 3</strong> (Mọi số nguyên âm đều nhỏ hơn bất kì số nguyên dương nào).<br>
+      d) <strong>-15 &gt; -21</strong> (Vì trên trục số, điểm -15 nằm về phía bên phải điểm -21, hoặc so sánh phần số tự nhiên: 15 &lt; 21 nên -15 &gt; -21).
+    </div>
+  </div>
+
+  <!-- Câu 7 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 7: Sắp xếp các số nguyên</div>
+    <p>Cho dãy số nguyên sau: <code>-32; 15; -4; 0; 9; -18; -1</code>.<br>
+    a) Sắp xếp theo thứ tự tăng dần (từ nhỏ đến lớn).<br>
+    b) Sắp xếp theo thứ tự giảm dần (từ lớn đến nhỏ).</p>
+    <button class="btn" onclick="toggleAnswer(7)">Xem đáp án</button>
+    <div id="ans-7" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      • Nhóm các số âm: -32 &lt; -18 &lt; -4 &lt; -1<br>
+      • Nhóm số 0 và số dương: 0 &lt; 9 &lt; 15<br>
+      a) <strong>Thứ tự tăng dần:</strong> -32; -18; -4; -1; 0; 9; 15<br>
+      b) <strong>Thứ tự giảm dần:</strong> 15; 9; 0; -1; -4; -18; -32
+    </div>
+  </div>
+
+  <!-- Câu 8 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 8: Liệt kê các số nguyên thỏa mãn bất đẳng thức</div>
+    <p>Viết tập hợp các số nguyên x thỏa mãn các điều kiện sau:<br>
+    a) -3 &lt; x &lt; 4<br>
+    b) -5 ≤ x ≤ 1<br>
+    c) -2 &lt; x ≤ 3</p>
+    <button class="btn" onclick="toggleAnswer(8)">Xem đáp án</button>
+    <div id="ans-8" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      a) x ∈ {<strong>-2; -1; 0; 1; 2; 3</strong>}<br>
+      b) x ∈ {<strong>-5; -4; -3; -2; -1; 0; 1</strong>} (Lưu ý lấy cả hai đầu mút vì có dấu "≤")<br>
+      c) x ∈ {<strong>-1; 0; 1; 2; 3</strong>}
+    </div>
+  </div>
+
+  <!-- Câu 9 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 9: Điểm đối xứng trên trục số</div>
+    <p>a) Trên trục số, hai điểm biểu diễn hai số đối nhau có vị trí như thế nào so với điểm gốc 0?<br>
+    b) Điểm M cách điểm -3 một khoảng bằng 5 đơn vị. Hỏi điểm M có thể biểu diễn những số nguyên nào?</p>
+    <button class="btn" onclick="toggleAnswer(9)">Xem đáp án</button>
+    <div id="ans-9" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      a) Hai điểm biểu diễn hai số đối nhau nằm ở <strong>hai phía đối diện nhau</strong> qua điểm gốc 0 và <strong>cách đều điểm gốc 0</strong>.<br>
+      b) Có 2 khả năng:<br>
+      - Điểm M nằm về phía bên phải điểm -3: từ -3 tiến sang phải 5 đơn vị sẽ đến điểm <strong>2</strong>.<br>
+      - Điểm M nằm về phía bên trái điểm -3: từ -3 lùi sang trái 5 đơn vị sẽ đến điểm <strong>-8</strong>.<br>
+      Vậy điểm M có thể biểu diễn số <strong>2</strong> hoặc <strong>-8</strong>.
+    </div>
+  </div>
+
+  <!-- Câu 10 -->
+  <div class="exercise-card">
+    <div class="question-title">Câu 10: Ứng dụng thực tế so sánh nhiệt độ</div>
+    <p>Bảng đo nhiệt độ vào một ngày mùa đông tại 4 thành phố như sau:<br>
+    • Moskva: -8°C<br>
+    • Bắc Kinh: -3°C<br>
+    • Tokyo: 6°C<br>
+    • Seoul: -5°C<br>
+    a) Thành phố nào có nhiệt độ thấp nhất? Thành phố nào có nhiệt độ cao nhất?<br>
+    b) Sắp xếp các thành phố theo nhiệt độ từ lạnh nhất đến ấm nhất.</p>
+    <button class="btn" onclick="toggleAnswer(10)">Xem đáp án</button>
+    <div id="ans-10" class="answer-box">
+      <strong>Lời giải:</strong><br>
+      So sánh các số nguyên: <code>-8 &lt; -5 &lt; -3 &lt; 6</code><br>
+      a) <br>
+      - Thành phố có nhiệt độ thấp nhất: <strong>Moskva (-8°C)</strong>.<br>
+      - Thành phố có nhiệt độ cao nhất: <strong>Tokyo (6°C)</strong>.<br>
+      b) Sắp xếp từ lạnh nhất đến ấm nhất (nhiệt độ tăng dần):<br>
+      <strong>Moskva (-8°C) → Seoul (-5°C) → Bắc Kinh (-3°C) → Tokyo (6°C)</strong>.
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleAnswer(id) {
+    const el = document.getElementById('ans-' + id);
+    const btn = event.target;
+    if (el.classList.contains('show')) {
+      el.classList.remove('show');
+      btn.textContent = 'Xem đáp án';
+    } else {
+      el.classList.add('show');
+      btn.textContent = 'Ẩn đáp án';
+    }
+  }
+
+  let allShown = false;
+  function toggleAll() {
+    allShown = !allShown;
+    const answers = document.querySelectorAll('.answer-box');
+    const buttons = document.querySelectorAll('.exercise-card .btn');
+    
+    answers.forEach(box => {
+      if (allShown) {
+        box.classList.add('show');
+      } else {
+        box.classList.remove('show');
+      }
+    });
+
+    buttons.forEach(btn => {
+      btn.textContent = allShown ? 'Ẩn đáp án' : 'Xem đáp án';
+    });
+  }
+</script>
+
+</body>
+</html>
