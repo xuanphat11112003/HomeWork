@@ -764,12 +764,30 @@
   }
 
   function speakWord(text) {
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'en-US';
-      utterance.rate = 0.9;
-      window.speechSynthesis.speak(utterance);
+    if (!('speechSynthesis' in window)) {
+      alert('Trình duyệt không hỗ trợ phát âm.');
+      return;
     }
+
+    // Dừng phát âm cũ nếu đang đọc dở (tránh lỗi nghẽn trên iOS)
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    utterance.rate = 1.0; // Tốc độ chuẩn tự nhiên (tránh bị rè hoặc nghẹt tiếng trên iPhone)
+    utterance.pitch = 1.0;
+
+    // Chọn đúng giọng tiếng Anh chuẩn của iOS/Siri thay vì dùng giọng mặc định của máy
+    const voices = window.speechSynthesis.getVoices();
+    if (voices && voices.length > 0) {
+      const bestVoice = voices.find(v => v.lang === 'en-US' && (v.name.includes('Samantha') || v.name.includes('Siri') || v.name.includes('Natural') || !v.name.includes('Compact')))
+                     || voices.find(v => v.lang.startsWith('en'));
+      if (bestVoice) {
+        utterance.voice = bestVoice;
+      }
+    }
+
+    window.speechSynthesis.speak(utterance);
   }
 
   function renderTable() {
