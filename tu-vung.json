@@ -1,5 +1,309 @@
 [
   {
+    "id": 58,
+    "word": "Think",
+    "part": "verb",
+    "meaning": "Nghỉ về",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 57,
+    "word": "Speak",
+    "part": "verb",
+    "meaning": "đọc",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 56,
+    "word": "With",
+    "part": "adj",
+    "meaning": "với",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 55,
+    "word": "share",
+    "part": "verb",
+    "meaning": "chia sẽ",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 54,
+    "word": "sport",
+    "part": "noun",
+    "meaning": "thể thao",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 53,
+    "word": "tall",
+    "part": "noun",
+    "meaning": "cao",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 52,
+    "word": "blonde",
+    "part": "noun",
+    "meaning": "tóc vàng",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 51,
+    "word": "Have",
+    "part": "verb",
+    "meaning": "có",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 50,
+    "word": "everything",
+    "part": "noun",
+    "meaning": "tất mọi thứ",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 49,
+    "word": "to",
+    "part": "verb",
+    "meaning": "để",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 48,
+    "word": "ask",
+    "part": "verb",
+    "meaning": "hỏi",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 47,
+    "word": "there",
+    "part": "noun",
+    "meaning": "ở đó",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 46,
+    "word": "here",
+    "part": "noun",
+    "meaning": "ở đây",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 45,
+    "word": "False",
+    "part": "noun",
+    "meaning": "Sai",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 44,
+    "word": "True",
+    "part": "noun",
+    "meaning": "Đúng",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 43,
+    "word": "text",
+    "part": "noun",
+    "meaning": "đoạn văn",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 42,
+    "word": "Read",
+    "part": "verb",
+    "meaning": "Đọc",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 41,
+    "word": "Listen",
+    "part": "verb",
+    "meaning": "nge",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 40,
+    "word": "This",
+    "part": "phrase",
+    "meaning": "này, đây",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 39,
+    "word": "That",
+    "part": "phrase",
+    "meaning": "đó",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 37,
+    "word": "people",
+    "part": "noun",
+    "meaning": "mọi người",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 36,
+    "word": "Can",
+    "part": "phrase",
+    "meaning": "có thẻ",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 35,
+    "word": "age",
+    "part": "noun",
+    "meaning": "tuổi",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 34,
+    "word": "Superb",
+    "part": "adj",
+    "meaning": "tuyệt vời",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 33,
+    "word": "summer",
+    "part": "noun",
+    "meaning": "mùa hè",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 32,
+    "word": "communication",
+    "part": "noun",
+    "meaning": "sự truyền đạt",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 31,
+    "word": "usually",
+    "part": "adj",
+    "meaning": "thường xuyên",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 30,
+    "word": "picture",
+    "part": "noun",
+    "meaning": "tranh, ảnh",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 29,
+    "word": "draw",
+    "part": "verb",
+    "meaning": "vẽ",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 28,
+    "word": "letter",
+    "part": "noun",
+    "meaning": "bức thư",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 27,
+    "word": "quiet",
+    "part": "verb",
+    "meaning": "giữ im lặng",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 26,
+    "word": "Ride",
+    "part": "verb",
+    "meaning": "Đi, cưỡi",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 25,
+    "word": "breakfasts",
+    "part": "noun",
+    "meaning": "bữa sáng",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 24,
+    "word": "lunch",
+    "part": "noun",
+    "meaning": "bữa  trưa",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 23,
+    "word": "dinner",
+    "part": "noun",
+    "meaning": "bữa tối",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 22,
+    "word": "Room",
+    "part": "noun",
+    "meaning": "Phòng",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 21,
+    "word": "Someone",
+    "part": "noun",
+    "meaning": "Ai đó",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
+    "id": 20,
+    "word": "children",
+    "part": "noun",
+    "meaning": "Những đứa  trẻ",
+    "example": "",
+    "topic": "Unitt 3"
+  },
+  {
     "id": 1,
     "word": "uniform",
     "part": "noun",
