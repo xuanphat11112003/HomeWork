@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện Tập Toán 6: Số Nguyên (Bài 14 - 16)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Confetti JS for celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Be Vietnam Pro"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
+            min-height: 100vh;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased p-3 sm:p-6 lg:p-8 flex flex-col items-center">
+
+    <!-- Header Section -->
+    <header class="w-full max-w-4xl bg-white rounded-3xl p-5 sm:p-7 custom-shadow mb-6 border border-emerald-100">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl shadow-inner">
+                    <i class="fa-solid fa-calculator"></i>
+                </div>
+                <div>
+                    <span class="inline-block px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 rounded-full border border-emerald-200 mb-1">
+                        Toán 6 • Kết Nối Tri Thức
+                    </span>
+                    <h1 class="text-xl sm:text-2xl font-extrabold text-slate-800">Chương III: Bài 14, 15, 16 - Số Nguyên</h1>
+                </div>
+            </div>
+
+            <!-- Timer & Info badge -->
+            <div class="flex items-center gap-3 w-full md:w-auto justify-end">
+                <div class="bg-amber-50 border border-amber-200 text-amber-800 px-4 py-2 rounded-2xl flex items-center gap-2 font-bold shadow-sm">
+                    <i class="fa-regular fa-clock text-amber-500 text-lg"></i>
+                    <span id="timer" class="text-lg tabular-nums">00:00</span>
+                </div>
+                <button id="quickNavBtn" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3.5 py-2 rounded-2xl font-medium text-sm flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-list-check text-emerald-600"></i>
+                    <span id="answeredCounter">0/10</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="mt-5">
+            <div class="flex justify-between text-xs font-semibold text-slate-500 mb-1.5">
+                <span>Tiến độ hoàn thành</span>
+                <span id="progressText">0%</span>
+            </div>
+            <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden p-0.5 border border-slate-200">
+                <div id="progressBar" class="bg-gradient-to-r from-emerald-400 to-teal-500 h-full rounded-full transition-all duration-300 w-0"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Quiz Container -->
+    <main class="w-full max-w-4xl space-y-6">
+
+        <!-- Result Banner (Hidden initially) -->
+        <div id="resultCard" class="hidden bg-white rounded-3xl p-6 sm:p-8 custom-shadow border-2 border-emerald-400 text-center relative overflow-hidden transition-all duration-500">
+            <div class="absolute -top-12 -right-12 w-36 h-36 bg-emerald-100 rounded-full opacity-50 pointer-events-none"></div>
+            <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 text-3xl mb-3 shadow-inner" id="resultIcon">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-black text-slate-800 mb-1" id="scoreTitle">Kết Quả Bài Làm</h2>
+            <p class="text-slate-600 mb-4 font-medium text-sm sm:text-base" id="scoreMessage">Tuyệt vời! Bạn đã hoàn thành xuất sắc bài kiểm tra!</p>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-xl mx-auto my-5">
+                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                    <div class="text-xs text-slate-500 font-semibold uppercase">Điểm số</div>
+                    <div class="text-2xl sm:text-3xl font-black text-emerald-600" id="scoreValue">10/10</div>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                    <div class="text-xs text-slate-500 font-semibold uppercase">Số câu đúng</div>
+                    <div class="text-2xl sm:text-3xl font-black text-teal-600" id="correctCount">10</div>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                    <div class="text-xs text-slate-500 font-semibold uppercase">Số câu sai</div>
+                    <div class="text-2xl sm:text-3xl font-black text-rose-500" id="wrongCount">0</div>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                    <div class="text-xs text-slate-500 font-semibold uppercase">Thời gian</div>
+                    <div class="text-2xl sm:text-3xl font-black text-amber-500" id="totalTimeTaken">02:15</div>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-center gap-3 mt-4">
+                <button onclick="restartQuiz()" class="px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold rounded-2xl shadow-lg shadow-emerald-200 active:scale-95 transition flex items-center gap-2">
+                    <i class="fa-solid fa-rotate-right"></i> Làm Lại Bài Thi
+                </button>
+                <a href="#question-1" class="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-2xl active:scale-95 transition flex items-center gap-2">
+                    <i class="fa-solid fa-list-ol"></i> Xem Chi Tiết Đáp Án
+                </a>
+            </div>
+        </div>
+
+        <!-- Questions List Container -->
+        <div id="questionsContainer" class="space-y-6">
+            <!-- Questions dynamically generated here -->
+        </div>
+
+        <!-- Bottom Action Bar -->
+        <div class="bg-white rounded-3xl p-5 custom-shadow border border-emerald-100 flex flex-col sm:flex-row items-center justify-between gap-4 sticky bottom-4 z-20 backdrop-blur-md bg-white/95">
+            <div class="flex items-center gap-2 text-sm text-slate-600">
+                <i class="fa-solid fa-circle-info text-emerald-500 text-base"></i>
+                <span>Hãy kiểm tra kỹ từng câu trước khi bấm nộp bài nhé!</span>
+            </div>
+            <div class="flex items-center gap-3 w-full sm:w-auto">
+                <button id="submitBtn" onclick="submitQuiz()" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-extrabold rounded-2xl shadow-lg shadow-emerald-200 active:scale-95 transition flex items-center justify-center gap-2 text-base">
+                    <i class="fa-solid fa-paper-plane"></i> Nộp Bài & Chấm Điểm
+                </button>
+            </div>
+        </div>
+
+        <!-- Topic Overview Card -->
+        <section class="bg-white rounded-3xl p-6 sm:p-7 custom-shadow border border-slate-200 text-slate-700 text-sm">
+            <h3 class="text-base font-bold text-slate-900 mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-book-bookmark text-emerald-600"></i>
+                Phạm vi kiến thức kiểm tra
+            </h3>
+            <ul class="grid sm:grid-cols-3 gap-3.5">
+                <li class="bg-emerald-50/70 p-3.5 rounded-2xl border border-emerald-100">
+                    <strong class="text-emerald-800 block mb-1">📘 Bài 14: Cộng & Trừ Số Nguyên</strong>
+                    Cộng hai số nguyên cùng dấu, khác dấu; phép trừ hai số nguyên; ứng dụng nhiệt độ & độ cao.
+                </li>
+                <li class="bg-teal-50/70 p-3.5 rounded-2xl border border-teal-100">
+                    <strong class="text-teal-800 block mb-1">📙 Bài 15: Quy Tắc Dấu Ngoặc</strong>
+                    Quy tắc bỏ ngoặc có dấu "+" hoặc dấu "−" đứng trước; nhóm số hạng tính nhanh hợp lý.
+                </li>
+                <li class="bg-sky-50/70 p-3.5 rounded-2xl border border-sky-100">
+                    <strong class="text-sky-800 block mb-1">📗 Bài 16: Phép Nhân Số Nguyên</strong>
+                    Nhân cùng dấu (+), khác dấu (−), tích nhiều thừa số âm, tìm x trong tích.
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Custom Dialog / Alert Modal -->
+    <div id="confirmModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl p-6 max-w-sm w-full custom-shadow border border-slate-100 text-center animate-bounce-short">
+            <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h4 class="text-lg font-bold text-slate-800 mb-1" id="modalTitle">Chưa hoàn thành hết!</h4>
+            <p class="text-slate-600 text-sm mb-5" id="modalMsg">Bạn vẫn còn câu hỏi chưa chọn đáp án. Bạn có chắc chắn muốn nộp bài ngay?</p>
+            <div class="flex gap-3">
+                <button onclick="closeModal()" class="flex-1 py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition">
+                    Làm tiếp
+                </button>
+                <button onclick="confirmSubmitQuiz()" class="flex-1 py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition">
+                    Vẫn nộp bài
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // 10 Comprehensive Questions Covering Lessons 14, 15, and 16
+        const questionsData = [
+            {
+                id: 1,
+                lesson: "Bài 14: Phép cộng và trừ số nguyên",
+                tag: "Cộng hai số nguyên khác dấu",
+                question: "Tính kết quả của phép tính sau: $$(-48) + 15$$",
+                options: [
+                    "-63",
+                    "-33",
+                    "33",
+                    "-37"
+                ],
+                correct: 1, // index of "-33"
+                explanation: "Muốn cộng hai số nguyên khác dấu (không đối nhau), ta lấy số có giá trị tuyệt đối lớn hơn trừ đi số có giá trị tuyệt đối nhỏ hơn, rồi đặt dấu của số có giá trị tuyệt đối lớn hơn trước kết quả:<br>Ta có: $|-48| = 48$ và $|15| = 15$. Vì $48 > 15$ nên $(-48) + 15 = -(48 - 15) = -33$."
+            },
+            {
+                id: 2,
+                lesson: "Bài 14: Phép cộng và trừ số nguyên",
+                tag: "Phép trừ số nguyên",
+                question: "Kết quả của phép trừ: $$(-25) - (-10)$$ là:",
+                options: [
+                    "-35",
+                    "15",
+                    "-15",
+                    "35"
+                ],
+                correct: 2, // index of "-15"
+                explanation: "Muốn trừ số nguyên $a$ cho số nguyên $b$, ta cộng $a$ với số đối của $b$: $a - b = a + (-b)$.<br>Số đối của $-10$ là $10$, do đó:<br>$$(-25) - (-10) = (-25) + 10 = -(25 - 10) = -15$$."
+            },
+            {
+                id: 3,
+                lesson: "Bài 14: Phép cộng và trừ số nguyên",
+                tag: "Bài toán thực tế",
+                question: "Vào buổi sáng, nhiệt độ tại đỉnh núi Sa Pa là $-2^\\circ\\text{C}$. Đến trưa, nhiệt độ tăng thêm $5^\\circ\\text{C}$. Nhiệt độ tại đỉnh núi vào buổi trưa là bao nhiêu?",
+                options: [
+                    "$-7^\\circ\\text{C}$",
+                    "$7^\\circ\\text{C}$",
+                    "$3^\\circ\\text{C}$",
+                    "$-3^\\circ\\text{C}$"
+                ],
+                correct: 2, // index of "3°C"
+                explanation: "Nhiệt độ tăng thêm $5^\\circ\\text{C}$ nên ta thực hiện phép cộng:<br>$$(-2) + 5 = 5 - 2 = 3^\\circ\\text{C}$$.<br>Vậy nhiệt độ lúc trưa là $3^\\circ\\text{C}$."
+            },
+            {
+                id: 4,
+                lesson: "Bài 14: Phép cộng và trừ số nguyên",
+                tag: "Tìm số nguyên x",
+                question: "Tìm số nguyên $x$ thỏa mãn phương trình: $$x - 17 = -30$$",
+                options: [
+                    "$x = -13$",
+                    "$x = -47$",
+                    "$x = 13$",
+                    "$x = 47$"
+                ],
+                correct: 0, // index of "x = -13"
+                explanation: "Để tìm số bị trừ, ta lấy hiệu cộng với số trừ:<br>$$x = -30 + 17$$<br>$$x = -(30 - 17) = -13$$.<br>Vậy $x = -13$."
+            },
+            {
+                id: 5,
+                lesson: "Bài 15: Quy tắc dấu ngoặc",
+                tag: "Quy tắc phá ngoặc",
+                question: "Khi bỏ dấu ngoặc trong biểu thức $A = -(a - b + c)$, kết quả thu được là:",
+                options: [
+                    "$-a - b + c$",
+                    "$-a + b - c$",
+                    "$-a + b + c$",
+                    "$a - b + c$"
+                ],
+                correct: 1, // index of "-a + b - c"
+                explanation: "Theo quy tắc dấu ngoặc: Khi bỏ dấu ngoặc có dấu '$-$' đằng trước, ta phải đổi dấu tất cả các số hạng trong ngoặc (dấu '$+$' thành '$-$' và dấu '$-$' thành '$+$').<br>Vì vậy: $-(a - b + c) = -a + b - c$."
+            },
+            {
+                id: 6,
+                lesson: "Bài 15: Quy tắc dấu ngoặc",
+                tag: "Tính nhanh hợp lý",
+                question: "Tính giá trị biểu thức một cách hợp lý: $$B = (215 - 43) - (215 - 143)$$",
+                options: [
+                    "$100$",
+                    "$-100$",
+                    "$186$",
+                    "$-86$"
+                ],
+                correct: 0, // index of "100"
+                explanation: "Áp dụng quy tắc dấu ngoặc để phá ngoặc rồi nhóm thích hợp:<br>$$B = 215 - 43 - 215 + 143$$<br>$$B = (215 - 215) + (143 - 43)$$<br>$$B = 0 + 100 = 100$$."
+            },
+            {
+                id: 7,
+                lesson: "Bài 16: Phép nhân số nguyên",
+                tag: "Quy tắc dấu của tích",
+                question: "Tính tích: $$(-12) \\cdot (-5)$$",
+                options: [
+                    "$-60$",
+                    "$60$",
+                    "$-17$",
+                    "$17$"
+                ],
+                correct: 1, // index of "60"
+                explanation: "Tích của hai số nguyên cùng dấu là một số nguyên dương: $(-a) \\cdot (-b) = a \\cdot b$.<br>Do đó: $(-12) \\cdot (-5) = 12 \\cdot 5 = 60$."
+            },
+            {
+                id: 8,
+                lesson: "Bài 16: Phép nhân số nguyên",
+                tag: "Nhân hai số nguyên khác dấu",
+                question: "Kết quả của phép nhân $$25 \\cdot (-4)$$ là:",
+                options: [
+                    "$100$",
+                    "$-29$",
+                    "$-100$",
+                    "$-21$"
+                ],
+                correct: 2, // index of "-100"
+                explanation: "Tích của hai số nguyên khác dấu luôn là một số nguyên âm: $a \\cdot (-b) = -(a \\cdot b)$.<br>Do đó: $25 \\cdot (-4) = -(25 \\cdot 4) = -100$."
+            },
+            {
+                id: 9,
+                lesson: "Bài 16: Phép nhân số nguyên",
+                tag: "Tích nhiều số nguyên & dấu",
+                question: "Tính giá trị của tích sau: $$P = (-2) \\cdot (-3) \\cdot (-4) \\cdot 5$$",
+                options: [
+                    "$120$",
+                    "$-120$",
+                    "$-24$",
+                    "$24$"
+                ],
+                correct: 1, // index of "-120"
+                explanation: "Trong tích có 3 thừa số mang dấu âm (số lượng thừa số âm là lẻ), nên tích mang dấu âm:<br>$$P = - (2 \\cdot 3 \\cdot 4 \\cdot 5) = - (6 \\cdot 20) = -120$$."
+            },
+            {
+                id: 10,
+                lesson: "Bài 16: Phép nhân số nguyên",
+                tag: "Tìm x trong phương trình tích",
+                question: "Tìm số nguyên $x$ biết: $$(-3) \\cdot x = -27$$",
+                options: [
+                    "$x = -9$",
+                    "$x = 9$",
+                    "$x = 24$",
+                    "$x = -30$"
+                ],
+                correct: 1, // index of "x = 9"
+                explanation: "Muốn tìm thừa số chưa biết, ta lấy tích chia cho thừa số đã biết:<br>$$x = (-27) : (-3)$$<br>Vì thương của hai số nguyên cùng dấu âm là số dương nên $x = 27 : 3 = 9$."
+            }
+        ];
+
+        // App States
+        let userAnswers = new Array(questionsData.length).fill(null);
+        let isSubmitted = false;
+        let secondsElapsed = 0;
+        let timerInterval = null;
+
+        // Initialize Timer
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                secondsElapsed++;
+                const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+                const secs = String(secondsElapsed % 60).padStart(2, '0');
+                document.getElementById('timer').textContent = `${mins}:${secs}`;
+            }, 1000);
+        }
+
+        // Render Questions
+        function renderQuestions() {
+            const container = document.getElementById('questionsContainer');
+            container.innerHTML = '';
+
+            questionsData.forEach((q, idx) => {
+                const questionCard = document.createElement('article');
+                questionCard.id = `question-${idx + 1}`;
+                questionCard.className = "bg-white rounded-3xl p-5 sm:p-7 custom-shadow border border-slate-200/90 transition-all";
+
+                // Format math text helper
+                const formattedQuestion = formatMathText(q.question);
+
+                questionCard.innerHTML = `
+                    <div class="flex items-center justify-between gap-2 mb-3">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                            <i class="fa-solid fa-circle-question"></i> Câu ${idx + 1}
+                        </span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-xl">
+                                ${q.lesson.split(':')[0]}
+                            </span>
+                            <span class="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-1 rounded-xl hidden sm:inline-block">
+                                ${q.tag}
+                            </span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-base sm:text-lg font-bold text-slate-800 mb-5 leading-relaxed">
+                        ${formattedQuestion}
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="options-group-${idx}">
+                        ${q.options.map((opt, optIdx) => {
+                            const letters = ['A', 'B', 'C', 'D'];
+                            const isSelected = userAnswers[idx] === optIdx;
+                            return `
+                                <button type="button" 
+                                    onclick="selectOption(${idx}, ${optIdx})"
+                                    class="option-btn option-${idx}-${optIdx} text-left p-3.5 sm:p-4 rounded-2xl border-2 transition-all flex items-center gap-3.5 ${
+                                        isSelected 
+                                        ? 'border-emerald-500 bg-emerald-50/70 text-emerald-900 font-semibold shadow-sm' 
+                                        : 'border-slate-200 bg-slate-50/60 hover:border-slate-300 text-slate-700'
+                                    }">
+                                    <span class="w-8 h-8 rounded-xl flex items-center justify-center font-bold text-sm shrink-0 transition-colors ${
+                                        isSelected 
+                                        ? 'bg-emerald-600 text-white' 
+                                        : 'bg-white border border-slate-300 text-slate-600'
+                                    }">
+                                        ${letters[optIdx]}
+                                    </span>
+                                    <span class="text-sm sm:text-base">${formatMathText(opt)}</span>
+                                </button>
+                            `;
+                        }).join('')}
+                    </div>
+
+                    <!-- Explanation Box (revealed after submission) -->
+                    <div id="explanation-${idx}" class="hidden mt-5 p-4 sm:p-5 rounded-2xl border text-sm">
+                        <!-- Populated upon submit -->
+                    </div>
+                `;
+
+                container.appendChild(questionCard);
+            });
+        }
+
+        // Format math formulas nicely
+        function formatMathText(str) {
+            return str
+                .replace(/\$\$(.*?)\$\$/g, '<span class="font-mono bg-emerald-50/80 text-emerald-950 font-bold px-2 py-0.5 rounded-lg border border-emerald-200 inline-block my-0.5">$1</span>')
+                .replace(/\$(.*?)\$/g, '<span class="font-mono font-bold text-emerald-900">$1</span>')
+                .replace(/\\cdot/g, '×')
+                .replace(/\\circ/g, '°')
+                .replace(/\\text\{C\}/g, 'C');
+        }
+
+        // Handle Option Selection
+        function selectOption(qIdx, optIdx) {
+            if (isSubmitted) return; // Locked after submitting
+
+            userAnswers[qIdx] = optIdx;
+            updateQuestionUI(qIdx);
+            updateProgress();
+        }
+
+        // Refresh UI of specific question
+        function updateQuestionUI(qIdx) {
+            const letters = ['A', 'B', 'C', 'D'];
+            questionsData[qIdx].options.forEach((_, optIdx) => {
+                const btn = document.querySelector(`.option-${qIdx}-${optIdx}`);
+                const badge = btn.querySelector('span');
+                const isSelected = userAnswers[qIdx] === optIdx;
+
+                if (isSelected) {
+                    btn.className = "option-btn text-left p-3.5 sm:p-4 rounded-2xl border-2 transition-all flex items-center gap-3.5 border-emerald-500 bg-emerald-50/70 text-emerald-900 font-semibold shadow-sm";
+                    badge.className = "w-8 h-8 rounded-xl flex items-center justify-center font-bold text-sm shrink-0 transition-colors bg-emerald-600 text-white";
+                } else {
+                    btn.className = "option-btn text-left p-3.5 sm:p-4 rounded-2xl border-2 transition-all flex items-center gap-3.5 border-slate-200 bg-slate-50/60 hover:border-slate-300 text-slate-700";
+                    badge.className = "w-8 h-8 rounded-xl flex items-center justify-center font-bold text-sm shrink-0 transition-colors bg-white border border-slate-300 text-slate-600";
+                }
+            });
+        }
+
+        // Update Progress Bar & Counter
+        function updateProgress() {
+            const answeredCount = userAnswers.filter(a => a !== null).length;
+            const percent = Math.round((answeredCount / questionsData.length) * 100);
+
+            document.getElementById('answeredCounter').textContent = `${answeredCount}/${questionsData.length}`;
+            document.getElementById('progressBar').style.width = `${percent}%`;
+            document.getElementById('progressText').textContent = `${percent}%`;
+        }
+
+        // Submit Button Handler with validation modal
+        function submitQuiz() {
+            if (isSubmitted) return;
+
+            const unanswered = userAnswers.filter(a => a === null).length;
+            if (unanswered > 0) {
+                document.getElementById('modalTitle').textContent = `Còn ${unanswered} câu chưa làm!`;
+                document.getElementById('modalMsg').textContent = `Bạn vẫn còn ${unanswered} câu chưa chọn đáp án. Bạn muốn làm tiếp hay nộp bài luôn?`;
+                document.getElementById('confirmModal').classList.remove('hidden');
+            } else {
+                confirmSubmitQuiz();
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('confirmModal').classList.add('hidden');
+        }
+
+        // Confirm submission & calculate score
+        function confirmSubmitQuiz() {
+            closeModal();
+            isSubmitted = true;
+            clearInterval(timerInterval);
+
+            // Compute score
+            let correct = 0;
+            questionsData.forEach((q, idx) => {
+                if (userAnswers[idx] === q.correct) {
+                    correct++;
+                }
+            });
+
+            const score = (correct * (10 / questionsData.length)).toFixed(1);
+            const wrong = questionsData.length - correct;
+
+            // Display Results
+            displayResults(correct, wrong, score);
+
+            // Show answers & explanations for all questions
+            revealAnswersAndExplanations();
+
+            // Scroll to results
+            document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth' });
+
+            // Confetti if high score
+            if (correct >= 8) {
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }
+        }
+
+        function displayResults(correct, wrong, score) {
+            const resultCard = document.getElementById('resultCard');
+            resultCard.classList.remove('hidden');
+
+            document.getElementById('scoreValue').textContent = `${score}/10`;
+            document.getElementById('correctCount').textContent = correct;
+            document.getElementById('wrongCount').textContent = wrong;
+
+            const mins = String(Math.floor(secondsElapsed / 60)).padStart(2, '0');
+            const secs = String(secondsElapsed % 60).padStart(2, '0');
+            document.getElementById('totalTimeTaken').textContent = `${mins}:${secs}`;
+
+            const titleEl = document.getElementById('scoreTitle');
+            const msgEl = document.getElementById('scoreMessage');
+            const iconEl = document.getElementById('resultIcon');
+
+            if (score >= 9) {
+                titleEl.textContent = "Xuất sắc! Đỉnh cao số nguyên!";
+                msgEl.textContent = "Bạn đã nắm cực kỳ vững kiến thức về quy tắc dấu, phép cộng, trừ và nhân số nguyên!";
+                iconEl.className = "inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 text-3xl mb-3 shadow-inner";
+                iconEl.innerHTML = '<i class="fa-solid fa-crown text-amber-500"></i>';
+            } else if (score >= 7) {
+                titleEl.textContent = "Làm rất tốt!";
+                msgEl.textContent = "Bạn đã nắm vững các quy tắc cơ bản. Hãy xem lại những câu sai để đạt điểm tối đa nhé!";
+                iconEl.className = "inline-flex items-center justify-center w-20 h-20 rounded-full bg-teal-100 text-teal-600 text-3xl mb-3 shadow-inner";
+                iconEl.innerHTML = '<i class="fa-solid fa-star text-teal-600"></i>';
+            } else if (score >= 5) {
+                titleEl.textContent = "Cố gắng thêm một chút!";
+                msgEl.textContent = "Bạn đã hiểu bài nhưng còn nhầm lẫn một số quy tắc về dấu ngoặc hoặc nhân âm. Đọc kỹ phần giải thích bên dưới nhé!";
+                iconEl.className = "inline-flex items-center justify-center w-20 h-20 rounded-full bg-amber-100 text-amber-600 text-3xl mb-3 shadow-inner";
+                iconEl.innerHTML = '<i class="fa-solid fa-lightbulb text-amber-600"></i>';
+            } else {
+                titleEl.textContent = "Cần ôn tập thêm!";
+                msgEl.textContent = "Đừng nản lòng! Hãy đọc thật kỹ lời giải chi tiết cho từng câu bên dưới rồi bấm 'Làm Lại' để thử sức nhé!";
+                iconEl.className = "inline-flex items-center justify-center w-20 h-20 rounded-full bg-rose-100 text-rose-600 text-3xl mb-3 shadow-inner";
+                iconEl.innerHTML = '<i class="fa-solid fa-book-open-reader text-rose-600"></i>';
+            }
+
+            // Hide the submit button in footer
+            document.getElementById('submitBtn').classList.add('hidden');
+        }
+
+        // Reveal detailed answers and explanations
+        function revealAnswersAndExplanations() {
+            const letters = ['A', 'B', 'C', 'D'];
+
+            questionsData.forEach((q, idx) => {
+                const isCorrect = userAnswers[idx] === q.correct;
+                const card = document.getElementById(`question-${idx + 1}`);
+
+                // Update card border to indicate correctness
+                if (isCorrect) {
+                    card.classList.add('border-emerald-400', 'bg-emerald-50/20');
+                } else {
+                    card.classList.add('border-rose-300', 'bg-rose-50/20');
+                }
+
+                // Update option buttons styling
+                q.options.forEach((_, optIdx) => {
+                    const btn = document.querySelector(`.option-${idx}-${optIdx}`);
+                    const badge = btn.querySelector('span');
+
+                    if (optIdx === q.correct) {
+                        // Correct Answer
+                        btn.className = "option-btn text-left p-3.5 sm:p-4 rounded-2xl border-2 transition-all flex items-center gap-3.5 border-emerald-500 bg-emerald-100/90 text-emerald-950 font-bold";
+                        badge.className = "w-8 h-8 rounded-xl flex items-center justify-center font-bold text-sm shrink-0 bg-emerald-600 text-white";
+                        btn.innerHTML += `<span class="ml-auto text-emerald-700 font-bold text-xs sm:text-sm flex items-center gap-1"><i class="fa-solid fa-check"></i> Đáp án đúng</span>`;
+                    } else if (optIdx === userAnswers[idx] && !isCorrect) {
+                        // User chose this wrong answer
+                        btn.className = "option-btn text-left p-3.5 sm:p-4 rounded-2xl border-2 transition-all flex items-center gap-3.5 border-rose-400 bg-rose-100/80 text-rose-950 font-semibold";
+                        badge.className = "w-8 h-8 rounded-xl flex items-center justify-center font-bold text-sm shrink-0 bg-rose-500 text-white";
+                        btn.innerHTML += `<span class="ml-auto text-rose-600 font-bold text-xs sm:text-sm flex items-center gap-1"><i class="fa-solid fa-xmark"></i> Bạn chọn</span>`;
+                    } else {
+                        // Neutral options
+                        btn.className = "option-btn text-left p-3.5 sm:p-4 rounded-2xl border border-slate-200 bg-white/50 text-slate-400 opacity-60";
+                    }
+                    btn.disabled = true;
+                });
+
+                // Display explanation box
+                const expBox = document.getElementById(`explanation-${idx}`);
+                expBox.classList.remove('hidden');
+
+                if (isCorrect) {
+                    expBox.className = "mt-5 p-4 sm:p-5 rounded-2xl border border-emerald-200 bg-emerald-50 text-emerald-900";
+                    expBox.innerHTML = `
+                        <div class="flex items-center gap-2 font-bold text-emerald-800 mb-1 text-sm sm:text-base">
+                            <i class="fa-solid fa-circle-check text-emerald-600"></i>
+                            Chính xác! Lời giải chi tiết:
+                        </div>
+                        <div class="leading-relaxed pl-6 text-slate-700 text-xs sm:text-sm">
+                            ${formatMathText(q.explanation)}
+                        </div>
+                    `;
+                } else {
+                    expBox.className = "mt-5 p-4 sm:p-5 rounded-2xl border border-rose-200 bg-rose-50 text-rose-900";
+                    expBox.innerHTML = `
+                        <div class="flex items-center gap-2 font-bold text-rose-800 mb-1 text-sm sm:text-base">
+                            <i class="fa-solid fa-circle-xmark text-rose-600"></i>
+                            Chưa chính xác! Lời giải chi tiết:
+                        </div>
+                        <div class="leading-relaxed pl-6 text-slate-700 text-xs sm:text-sm">
+                            <p class="mb-1 font-semibold text-rose-700">Đáp án đúng là: <strong>${letters[q.correct]}. ${formatMathText(q.options[q.correct])}</strong></p>
+                            ${formatMathText(q.explanation)}
+                        </div>
+                    `;
+                }
+            });
+        }
+
+        // Restart Quiz
+        function restartQuiz() {
+            userAnswers = new Array(questionsData.length).fill(null);
+            isSubmitted = false;
+            secondsElapsed = 0;
+
+            document.getElementById('resultCard').classList.add('hidden');
+            document.getElementById('submitBtn').classList.remove('hidden');
+
+            renderQuestions();
+            updateProgress();
+
+            clearInterval(timerInterval);
+            startTimer();
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            renderQuestions();
+            startTimer();
+        };
+    </script>
+</body>
+</html>

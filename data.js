@@ -4,6 +4,17 @@
 window.EXERCISE_DATA = [
     {
         "id":  "toan-01",
+        "title":  "Luyện Tập Toán 6: Số Nguyên (Bài 14 - 16)",
+        "subject":  "toan",
+        "subjectName":  "Toan hoc",
+        "file":  "toan/bai_tap_14_16.html",
+        "grade":  "Lop 6",
+        "badge":  "Toan hoc",
+        "questionsCount":  5,
+        "description":  "Bai tap ren luyen va cung co kien thuc mon Toan."
+    },
+    {
+        "id":  "toan-02",
         "title":  "Bài tập Bài 13: Tập hợp các số nguyên - Toán 6",
         "subject":  "toan",
         "subjectName":  "Toan hoc",
@@ -14,7 +25,7 @@ window.EXERCISE_DATA = [
         "description":  "Bai tap ren luyen va cung co kien thuc mon Toan."
     },
     {
-        "id":  "toan-02",
+        "id":  "toan-03",
         "title":  "Bài tập Số nguyên - Toán lớp 6",
         "subject":  "toan",
         "subjectName":  "Toan hoc",
@@ -25,7 +36,7 @@ window.EXERCISE_DATA = [
         "description":  "Bai tap ren luyen va cung co kien thuc mon Toan."
     },
     {
-        "id":  "en-03",
+        "id":  "en-04",
         "title":  "Tiếng Anh 6 - Thì Hiện Tại Đơn \u0026 Hiện Tại Tiếp Diễn",
         "subject":  "tieng-anh",
         "subjectName":  "Tieng Anh",
@@ -36,7 +47,7 @@ window.EXERCISE_DATA = [
         "description":  "Luyen tap tu vung, ngu phap va cau truc cau Tieng Anh."
     },
     {
-        "id":  "en-04",
+        "id":  "en-05",
         "title":  "Tiếng Anh 6 - Thì Hiện Tại Tiếp Diễn (Present Continuous)",
         "subject":  "tieng-anh",
         "subjectName":  "Tieng Anh",
@@ -47,7 +58,7 @@ window.EXERCISE_DATA = [
         "description":  "Luyen tap tu vung, ngu phap va cau truc cau Tieng Anh."
     },
     {
-        "id":  "en-05",
+        "id":  "en-06",
         "title":  "Tiếng Anh 6 - Unit 1: My New School (Vocabulary \u0026 Grammar)",
         "subject":  "tieng-anh",
         "subjectName":  "Tieng Anh",
@@ -58,7 +69,7 @@ window.EXERCISE_DATA = [
         "description":  "Luyen tap tu vung, ngu phap va cau truc cau Tieng Anh."
     },
     {
-        "id":  "en-06",
+        "id":  "en-07",
         "title":  "Tiếng Anh 6 - Unit 3: My Friends (Luyện tập Từ vựng)",
         "subject":  "tieng-anh",
         "subjectName":  "Tieng Anh",
